@@ -4,6 +4,7 @@ import { DM_Sans, DM_Serif_Display, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
 import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 import { site } from "@/data/site";
 
 const dmSans = DM_Sans({
@@ -44,6 +45,8 @@ export default function RootLayout({
         <Header />
 
         <main>{children}</main>
+
+        <Footer />
       </body>
     </html>
   );

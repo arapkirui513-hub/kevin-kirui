@@ -1,9 +1,11 @@
+import { FeaturedWork } from "@/components/home/FeaturedWork";
+import { Hero } from "@/components/home/Hero";
+
 export default function HomePage() {
   return (
-    <main className="min-h-screen flex items-center justify-center">
-      <h1 className="text-4xl font-bold">
-        Kevin Kirui
-      </h1>
-    </main>
+    <>
+      <Hero />
+      <FeaturedWork />
+    </>
   );
 }
