@@ -7,7 +7,10 @@ import { home } from "@/data/home";
 
 export function Hero() {
   return (
-    <Section spacing="spacious">
+    <Section
+  spacing="spacious"
+  className="pt-16 md:pt-20 pb-12 md:pb-16"
+>
       <Container>
         <div className="max-w-4xl">
           <SectionHeading
@@ -18,7 +21,7 @@ export function Hero() {
             divider="heartbeat"
           />
 
-          <div className="mt-10 flex flex-wrap gap-4">
+          <div className="mt-8 flex flex-wrap gap-4">
             <Button href={home.hero.primaryCta.href}>
               {home.hero.primaryCta.label}
             </Button>

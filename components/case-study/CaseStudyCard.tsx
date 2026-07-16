@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { TextLink } from "@/components/ui/TextLink";
 
 import type { CaseStudy } from "@/types/case-study";
 
@@ -10,7 +10,7 @@ export function CaseStudyCard({
   caseStudy,
 }: CaseStudyCardProps) {
   return (
-    <article className="rounded-[var(--radius-lg)] border border-black/10 bg-white p-8 transition-shadow duration-200 hover:shadow-md">
+    <article className="flex h-full flex-col rounded-[var(--radius-lg)] border border-black/10 bg-white p-8 transition-shadow duration-200 hover:shadow-md">
       <p className="label">
         {caseStudy.category} · {caseStudy.year}
       </p>
@@ -23,12 +23,12 @@ export function CaseStudyCard({
         {caseStudy.summary}
       </p>
 
-      <Link
+      <TextLink
         href={`/work/${caseStudy.slug}`}
-        className="mt-8 inline-flex text-sm font-medium text-[var(--color-primary)] transition-colors hover:text-[var(--color-accent)]"
+        className="mt-auto pt-8"
       >
-        View Case Study →
-      </Link>
+        View Case Study
+      </TextLink>
     </article>
   );
 }
