@@ -3,6 +3,9 @@ import { DM_Sans, DM_Serif_Display, IBM_Plex_Mono } from "next/font/google";
 
 import "./globals.css";
 
+import { Header } from "@/components/layout/Header";
+import { site } from "@/data/site";
+
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
   subsets: ["latin"],
@@ -22,11 +25,10 @@ const ibmPlexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Kevin Kirui",
-    template: "%s | Kevin Kirui",
+    default: site.name,
+    template: `%s | ${site.name}`,
   },
-  description:
-    "Healthcare AI Product Systems Specialist designing workflow-first AI systems, clinical intelligence, and healthcare product experiences.",
+  description: site.description,
 };
 
 export default function RootLayout({
@@ -39,7 +41,9 @@ export default function RootLayout({
       <body
         className={`${dmSans.variable} ${dmSerif.variable} ${ibmPlexMono.variable}`}
       >
-        {children}
+        <Header />
+
+        <main>{children}</main>
       </body>
     </html>
   );

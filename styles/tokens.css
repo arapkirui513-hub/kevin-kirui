@@ -11,10 +11,10 @@
   --font-mono: var(--font-ibm-plex-mono);
 
   /* Layout */
-  --container-width: 72rem;
+  --layout-max-width: 72rem;
   --section-spacing: 6rem;
 
-  /* Radius */
+  /* Border Radius */
   --radius-sm: 0.375rem;
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
