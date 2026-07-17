@@ -1,9 +1,17 @@
 export const site = {
   name: "Kevin Kirui",
-  title: "Healthcare AI Product Systems Specialist",
+
   description:
-    "Designing workflow-first AI systems for healthcare through product thinking, structured data, and clinical intelligence.",
+    "Healthcare AI Product Systems Specialist designing workflow-first AI systems for clinical environments.",
+
   url: "https://kevinkirui.com",
-  email: "kiruikevin388@gmail.com",
-  location: "Nairobi, Kenya",
+
+  work: {
+    eyebrow: "My Work",
+
+    title: "Case Studies",
+
+    description:
+      "A collection of projects exploring healthcare AI, workflow intelligence, and product systems.",
+  },
 } as const;

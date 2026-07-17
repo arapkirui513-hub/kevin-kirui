@@ -15,9 +15,9 @@ export function CaseStudyCard({
         {caseStudy.category} · {caseStudy.year}
       </p>
 
-      <h3 className="mt-4 h2">
-        {caseStudy.title}
-      </h3>
+      <h3 className="mt-4 min-h-[4rem] h2">
+  {caseStudy.title}
+</h3>
 
       <p className="body mt-4 text-black/70">
         {caseStudy.summary}

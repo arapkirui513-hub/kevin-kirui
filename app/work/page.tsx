@@ -3,19 +3,19 @@ import { Container } from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
-import { home } from "@/data/home";
-import { getFeaturedCaseStudies } from "@/lib/case-studies";
+import { getAllCaseStudies } from "@/lib/case-studies";
+import { site } from "@/data/site";
 
-export function FeaturedWork() {
-  const caseStudies = getFeaturedCaseStudies();
+export default function WorkPage() {
+  const caseStudies = getAllCaseStudies();
 
   return (
-    <Section spacing="regular">
+    <Section spacing="spacious">
       <Container>
         <SectionHeading
-          eyebrow={home.featuredWork.eyebrow}
-          title={home.featuredWork.title}
-          description={home.featuredWork.description}
+          eyebrow={site.work.eyebrow}
+          title={site.work.title}
+          description={site.work.description}
           divider="heartbeat"
           className="mb-16"
         />
