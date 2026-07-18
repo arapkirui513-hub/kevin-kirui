@@ -18,3 +18,36 @@ export type CaseStudy = {
 
   tags: readonly string[];
 };
+
+export type CaseStudyFrontmatter = {
+  title: string;
+  slug: string;
+  summary: string;
+
+  published: boolean;
+  featured: boolean;
+
+  date: string;
+
+  role: readonly string[];
+
+  category: string;
+
+  tags: readonly string[];
+
+  repository: string;
+
+  status: string;
+
+  readingTime: string;
+
+  featuredImage: string;
+};
+
+export type PublishedCaseStudy = {
+  metadata: CaseStudy;
+
+  frontmatter: CaseStudyFrontmatter;
+
+  source: string;
+};

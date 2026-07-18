@@ -1,21 +1,24 @@
 import { notFound } from "next/navigation";
 
+import { MDXContent } from "@/components/mdx/MDXContent";
 import { Container } from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
-import { getCaseStudyBySlug } from "@/lib/case-studies";
+import { getPublishedCaseStudyBySlug } from "@/lib/case-studies";
 
 type CaseStudyPageProps = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
-export default function CaseStudyPage({
+export default async function CaseStudyPage({
   params,
 }: CaseStudyPageProps) {
-  const caseStudy = getCaseStudyBySlug(params.slug);
+  const { slug } = await params;
+
+  const caseStudy = getPublishedCaseStudyBySlug(slug);
 
   if (!caseStudy) {
     notFound();
@@ -25,9 +28,9 @@ export default function CaseStudyPage({
     <Section spacing="spacious">
       <Container>
         <SectionHeading
-          eyebrow={caseStudy.category}
-          title={caseStudy.title}
-          description={caseStudy.summary}
+          eyebrow={caseStudy.metadata.category}
+          title={caseStudy.metadata.title}
+          description={caseStudy.metadata.summary}
           divider="heartbeat"
         />
 
@@ -35,24 +38,24 @@ export default function CaseStudyPage({
           <dl className="grid gap-8 sm:grid-cols-3">
             <div>
               <dt className="label">Year</dt>
-              <dd className="mt-2">{caseStudy.year}</dd>
+              <dd className="mt-2">{caseStudy.metadata.year}</dd>
             </div>
 
             <div>
               <dt className="label">Status</dt>
-              <dd className="mt-2">{caseStudy.status}</dd>
+              <dd className="mt-2">{caseStudy.metadata.status}</dd>
             </div>
 
             <div>
               <dt className="label">Reading Time</dt>
-              <dd className="mt-2">{caseStudy.readingTime}</dd>
+              <dd className="mt-2">
+                {caseStudy.metadata.readingTime}
+              </dd>
             </div>
           </dl>
 
           <div className="mt-16">
-            <p className="body-lg text-black/60">
-              Case study content will be rendered here when we introduce MDX.
-            </p>
+            <MDXContent source={caseStudy.source} />
           </div>
         </div>
       </Container>

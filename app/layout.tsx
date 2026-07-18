@@ -6,6 +6,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { site } from "@/data/site";
+import "@/styles/mdx.css";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
