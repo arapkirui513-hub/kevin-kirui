@@ -1,0 +1,257 @@
+## Executive Summary
+
+Remote HealthAI Role Matcher is a rule-based decision-support pipeline designed to automate the discovery, evaluation, and prioritisation of remote healthcare AI job opportunities.
+
+The project addresses the challenge of navigating a fragmented remote job market by collecting opportunities from three remote job platforms, classifying them into domain-specific role categories, applying transparent relevance scoring, and progressively narrowing them into structured decision outputs for human review.
+
+Rather than functioning as a traditional job scraper, the pipeline transforms large volumes of job listings into increasingly actionable opportunities through a repeatable workflow of collection, processing, prioritisation, and automated delivery. Structured outputs are exported to Google Sheets and supported by Telegram notifications, creating a workflow that reduces manual effort while maintaining transparent decision logic.
+
+The project demonstrates workflow automation, rule-based decision support, structured data processing, and end-to-end information pipeline design. It illustrates how transparent processing and clearly documented decision rules can support efficient opportunity prioritisation without replacing human judgement.
+
+## Scope & Limitations
+
+This project demonstrates a transparent, rule-based workflow for discovering and prioritising remote healthcare AI opportunities. It is designed to automate information gathering and opportunity prioritisation while ensuring that every processing decision remains explainable, reproducible, and open to inspection.
+
+The current implementation aggregates opportunities from three remote job platforms, classifies them into domain-specific role categories using deterministic pattern matching, applies rule-based relevance scoring, progressively prioritises opportunities for review, and delivers structured outputs through CSV exports, Google Sheets, and Telegram notifications.
+
+The pipeline is intended to support human decision-making rather than replace it. It does not evaluate candidate qualifications, predict hiring outcomes, or generate personalised recommendations. Instead, it applies transparent processing rules consistently across all collected opportunities, allowing users to understand how opportunities are classified and prioritised before making their own application decisions.
+
+<Callout
+  title="Scope & Limitations"
+  variant="warning"
+>
+
+This project demonstrates a transparent decision-support workflow rather than an intelligent recommendation system. Role classification and relevance scoring are implemented using deterministic pattern-matching and predefined keyword rules, making every prioritisation decision traceable to the underlying implementation rather than adaptive or machine learning models.
+
+</Callout>
+
+## Context
+
+The rapid growth of remote work has expanded opportunities across healthcare AI, clinical informatics, workflow automation, product management, and operational intelligence. At the same time, these opportunities have become increasingly fragmented across multiple job platforms, each using different formats, search capabilities, and update schedules.
+
+For professionals targeting the intersection of healthcare and AI, finding relevant opportunities involves more than searching for individual keywords. Roles often combine multiple disciplines, including healthcare operations, workflow systems, artificial intelligence, data analytics, and product development. Relevant opportunities may therefore be described using different terminology while being distributed across several independent job boards.
+
+As new positions are posted continuously, manually reviewing multiple sources becomes repetitive and time-consuming. The challenge is not simply discovering vacancies but consistently identifying the small number of opportunities that best align with a specific professional focus before they become outdated.
+
+This project explores how a transparent workflow automation pipeline can reduce that manual effort by collecting opportunities from multiple sources, applying consistent classification and relevance rules, and progressively narrowing large volumes of job postings into structured, prioritised outputs for human review. Rather than replacing individual judgement, the pipeline demonstrates how deterministic processing can support faster and more consistent opportunity prioritisation.
+
+## Problem
+
+I wanted to reduce the amount of manual effort required to identify high-quality remote opportunities aligned with my interests in healthcare AI, workflow systems, and product engineering.
+
+Although remote job platforms provide search and filtering capabilities, they operate independently and often describe similar roles using different terminology. Finding relevant opportunities required repeatedly searching multiple websites, comparing overlapping listings, identifying healthcare-specific positions, and deciding which opportunities deserved immediate attention before they disappeared.
+
+Simply collecting more job listings did not solve that problem. The challenge was reducing a large volume of heterogeneous postings into a small, prioritised set of opportunities that could be reviewed efficiently and consistently.
+
+The goal of this project was therefore not to build another job scraper. Instead, I wanted to design a transparent workflow that could automate repetitive information processing while preserving human judgement over the final application decision. That required transforming raw job listings into structured decision outputs through consistent classification, deterministic relevance scoring, and progressive prioritisation.
+
+## Objectives
+
+This project was designed around five objectives that together support a structured opportunity prioritisation workflow.
+
+- **Automate opportunity collection** by aggregating remote healthcare AI job listings from three independent job platforms into a single processing pipeline.
+
+- **Reduce manual review effort** by classifying roles into domain-specific categories and applying consistent, transparent relevance scoring before human review.
+
+- **Prioritise actionable opportunities** by progressively narrowing large collections of job postings into scored datasets, shortlists, application-ready roles, and top-priority recommendations.
+
+- **Support repeatable workflows** by generating structured CSV outputs, synchronising results with Google Sheets, and delivering automated Telegram notifications for high-priority opportunities.
+
+- **Demonstrate transparent workflow automation** through a deterministic processing pipeline whose classification rules, scoring logic, and prioritisation decisions can be inspected, reproduced, and refined over time.
+
+## Approach
+
+I approached this project as a workflow automation problem rather than a web scraping exercise. Collecting job postings was only the first step. The greater challenge was designing a transparent pipeline that could progressively reduce large volumes of information into a small set of actionable opportunities while keeping every processing decision understandable and reproducible.
+
+Three principles guided the implementation.
+
+### 1. Prioritise transparent decision-making
+
+I chose deterministic classification and rule-based relevance scoring instead of machine learning so that every recommendation could be traced back to explicit processing rules. This made the pipeline easier to understand, validate, and refine as new role types and healthcare AI terminology emerged.
+
+### 2. Reduce decision overload progressively
+
+Rather than relying on a single ranking step, I designed the workflow to narrow opportunities through multiple stages. Raw job listings become scored datasets, shortlisted opportunities, application-ready roles, and finally top-priority recommendations. Each stage reduces manual review effort while preserving human judgement over the final application decision.
+
+### 3. Treat automation as workflow support
+
+I designed exports, Google Sheets synchronisation, and Telegram notifications as integral parts of the workflow rather than optional utilities. These delivery mechanisms ensure that prioritised opportunities move efficiently from data processing into everyday decision-making without requiring additional manual effort.
+
+This approach allowed the project to evolve beyond a simple collection script into a structured workflow that combines transparent processing, progressive prioritisation, and automated delivery within a single repeatable pipeline.
+
+## System Design
+
+The system is organised as a workflow automation pipeline that progressively transforms raw job listings into structured decision outputs. Each component has a single responsibility, allowing data collection, processing, prioritisation, automation, and reporting to evolve independently while preserving a consistent end-to-end workflow.
+
+The architecture consists of five logical components.
+
+### 1. Data Collection
+
+The collection component gathers job listings from three independent remote job platforms and combines them into a unified processing pipeline. Source-specific retrieval remains isolated from downstream processing so that additional providers can be incorporated without affecting the rest of the workflow.
+
+### 2. Data Processing
+
+The processing component prepares collected job listings for evaluation by standardising records, classifying roles into domain-specific categories, and assigning a rule-based relevance score. These processing steps produce a consistent representation of each opportunity before any prioritisation decisions are made.
+
+### 3. Progressive Prioritisation
+
+The prioritisation component progressively reduces the processed dataset into increasingly actionable outputs. Rather than presenting every collected opportunity equally, the workflow narrows the dataset through successive decision stages until only the highest-priority opportunities remain for immediate review.
+
+```text
+Collected Listings
+        ↓
+Scored Opportunities
+        ↓
+Shortlisted Opportunities
+        ↓
+Application-Ready Opportunities
+        ↓
+Top-Priority Opportunities
+```
+
+This staged approach reduces manual review effort while preserving human judgement over the final application decision.
+
+### 4. Automation and Delivery
+
+The automation component distributes prioritised outputs through structured CSV exports, Google Sheets synchronisation, and Telegram notifications. Separating delivery from processing allows the same prioritisation workflow to support multiple downstream destinations without changing the decision pipeline itself.
+
+### 5. Reporting Outputs
+
+The reporting component generates operational summaries of the processed dataset, including source-level and company-level counts. These reporting artefacts provide visibility into pipeline activity but do not influence classification, scoring, or prioritisation decisions.
+
+## Technical Implementation
+
+The project was implemented as a transparent workflow automation pipeline that combines multi-source data collection, rule-based processing, progressive prioritisation, and automated delivery. Each processing stage performs a specific task using deterministic rules, making the complete workflow reproducible and easy to inspect.
+
+### 1. Multi-Source Collection
+
+The pipeline collects job listings from three remote job platforms:
+
+- Remote OK (JSON API)
+- Remotive (JSON API)
+- We Work Remotely (HTML scraping)
+
+Although each source requires a different collection method, all retrieved listings are normalised into a common structure before entering the processing pipeline. Separating collection from downstream processing allows additional sources to be incorporated without changing the rest of the workflow.
+
+### 2. Role Classification
+
+Each collected job listing is classified into a single domain-specific role category using deterministic pattern matching on the job title and description.
+
+Supported categories include healthcare and clinical systems, AI and machine learning, workflow and operations, product, and data-related roles.
+
+Role classification provides structural context for each opportunity before prioritisation takes place. It categorises opportunities but does not influence their relevance score.
+
+### 3. Rule-Based Relevance Scoring
+
+After classification, each opportunity receives a rule-based relevance score generated from two predefined keyword tiers.
+
+The first tier contains general healthcare AI terms, while the second contains higher-value workflow and domain-specific terms. Keywords appearing in the higher-value tier contribute additional points, allowing opportunities with stronger healthcare AI relevance to receive higher scores.
+
+For example:
+
+| Keyword Tier | Example Keywords | Contribution |
+|--------------|------------------|-------------:|
+| General | healthcare, clinical, product | +5 |
+| High-value | workflow, EHR, EMR | Additional +5 |
+
+Scores are capped at **100**, producing a transparent and reproducible prioritisation methodology whose behaviour can be inspected directly from the implementation.
+
+### 4. Progressive Prioritisation
+
+The scored dataset is progressively refined using predefined decision rules.
+
+Minimum score thresholds determine shortlist eligibility, while posting freshness and application urgency are used to identify opportunities requiring immediate attention. These deterministic rules reduce manual review effort by surfacing the most actionable opportunities without replacing human judgement.
+
+### 5. Workflow Automation
+
+Following prioritisation, the pipeline automatically generates multiple workflow outputs.
+
+Structured CSV datasets are produced for downstream processing, synchronised with Google Sheets, and high-priority opportunities are delivered through Telegram notifications. In addition, the pipeline generates simple source-level and company-level summary reports that provide visibility into the processed dataset without influencing the prioritisation workflow itself.
+
+## Results
+
+The completed project transformed a fragmented remote job search workflow into a repeatable decision-support pipeline that automatically collects, evaluates, prioritises, and delivers remote healthcare AI opportunities. Rather than replacing human judgement, the workflow consistently reduces a large collection of job listings into a manageable set of opportunities for review through transparent processing rules and automated delivery.
+
+### Workflow Outcomes
+
+The repository snapshot demonstrates the following operational outputs from a captured pipeline run.
+
+<MetricGrid>
+
+<MetricCard
+  label="Job Sources"
+  value="3"
+  description="Remote job platforms integrated into the collection pipeline"
+/>
+
+<MetricCard
+  label="Processed Opportunities"
+  value="393"
+  description="Opportunities processed during the captured pipeline run"
+/>
+
+<MetricCard
+  label="Organisations"
+  value="112"
+  description="Organisations represented in the processed dataset"
+/>
+
+<MetricCard
+  label="Workflow Delivery"
+  value="Google Sheets + Telegram"
+  description="Automated delivery destinations"
+/>
+
+</MetricGrid>
+
+The pipeline successfully combines three independent job sources into a unified processing workflow, producing structured datasets that support different stages of opportunity review. These outputs include scored opportunities, shortlisted roles, application-ready opportunities, top-priority recommendations, source summaries, and company summaries.
+
+### Operational Capabilities
+
+The implemented workflow provides:
+
+- Three-source opportunity aggregation
+- Role classification using deterministic pattern matching
+- Rule-based relevance scoring
+- Progressive opportunity prioritisation
+- Structured CSV output generation
+- Google Sheets synchronisation
+- Telegram notification delivery
+- Source and company summary reporting
+
+<Callout
+  title="Key Outcome"
+  variant="success"
+>
+
+The project demonstrates that transparent workflow automation can reduce the manual effort required to organise and prioritise remote healthcare AI opportunities. By combining deterministic processing with automated delivery, the pipeline produces repeatable decision outputs that remain fully inspectable while leaving the final application decision to the user.
+
+</Callout>
+
+The completed implementation shows how a transparent workflow can transform fragmented job listings into structured decision outputs through repeatable processing rather than opaque recommendation logic. The result is a reproducible opportunity prioritisation workflow that can be inspected, refined, and extended as new job sources and decision rules are introduced.
+
+## Lessons Learned
+
+This project reinforced that workflow automation is not primarily about collecting more information. Its greatest value lies in reducing decision overload by progressively transforming large volumes of job listings into a smaller number of actionable opportunities. Designing the pipeline around successive decision stages demonstrated that transparent workflow design can be just as valuable as sophisticated algorithms when the goal is to support consistent human decision-making.
+
+Building the role classification and rule-based relevance scoring pipeline also changed how I think about explainable automation. Implementing deterministic processing rules required each prioritisation decision to be traceable to explicit logic rather than hidden behind opaque models. That experience reinforced the importance of designing systems whose behaviour can be inspected, validated, and refined as requirements evolve.
+
+The project also strengthened my appreciation for separating workflow responsibilities. Keeping collection, processing, prioritisation, automation, and reporting as independent components made the pipeline easier to understand, maintain, and extend without increasing unnecessary complexity elsewhere in the workflow.
+
+Revisiting the repository while preparing this case study reinforced another important lesson. Credibility comes not only from building reliable systems but also from describing them accurately. Verifying every architectural decision, workflow stage, and technical claim against the implementation demonstrated that disciplined documentation is as important as disciplined engineering.
+
+That experience now shapes how I approach workflow automation and decision-support systems. I place greater emphasis on transparent processing, clearly documented assumptions, and ensuring that every significant technical claim can be traced directly to the implementation.
+
+## What I'd Do Next
+
+If I continued developing this project, I would focus first on strengthening the existing prioritisation methodology before expanding the workflow pipeline or introducing additional capabilities.
+
+The first priority would be making the rule-based relevance scoring system configurable. The current implementation uses predefined keyword lists and scoring thresholds that are implemented directly in the application code. Externalising these rules into configurable files would allow the scoring methodology to evolve without requiring code changes, making the pipeline easier to maintain and adapt as healthcare AI terminology changes.
+
+The second priority would be improving opportunity understanding while preserving the transparency of the existing workflow. Rather than replacing the deterministic processing pipeline, I would complement it with lightweight natural language processing to generate concise role summaries, identify key skills, and enrich opportunities with additional contextual information. This would improve review efficiency while keeping the underlying prioritisation methodology transparent and reproducible.
+
+The third priority would be expanding the collection layer by integrating additional healthcare AI job boards, company career pages, and specialised recruitment platforms. Increasing source coverage would improve opportunity discovery while allowing the existing collection, processing, prioritisation, and automation workflow to remain unchanged.
+
+Finally, I would extend the project from a personal workflow into a configurable multi-user platform. Supporting personalised scoring profiles, historical opportunity tracking, salary normalisation, and browser-based dashboards would allow the same transparent workflow to support users with different professional backgrounds and career goals without changing its underlying decision-support principles.
+
+Taken together, these improvements would evolve the project from a personal rule-based opportunity prioritisation workflow into a configurable decision-support platform built on transparent processing, reproducible automation, and adaptable workflow design.
