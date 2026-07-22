@@ -11,6 +11,7 @@ type MDXContentProps = {
 
 const components = {
   Callout,
+  Figure,
   MetricCard,
   MetricGrid,
 };

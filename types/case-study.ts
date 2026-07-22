@@ -28,6 +28,9 @@ export type CaseStudyFrontmatter = {
   featured: boolean;
 
   date: string;
+  year: string;
+
+  client: string;
 
   role: readonly string[];
 
@@ -37,7 +40,7 @@ export type CaseStudyFrontmatter = {
 
   repository: string;
 
-  status: string;
+  status: CaseStudyStatus;
 
   readingTime: string;
 

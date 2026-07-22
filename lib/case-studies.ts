@@ -1,8 +1,4 @@
-import {
-  getAllProjects,
-  getFeaturedProjects,
-  getProjectBySlug,
-} from "@/data/projects";
+import { getProjectBySlug } from "@/data/projects";
 
 import {
   getAllMdxCaseStudies,
@@ -11,15 +7,41 @@ import {
 
 import type {
   CaseStudy,
+  CaseStudyFrontmatter,
   PublishedCaseStudy,
 } from "@/types/case-study";
 
+function toCaseStudy(
+  frontmatter: CaseStudyFrontmatter
+): CaseStudy {
+  return {
+    slug: frontmatter.slug,
+    title: frontmatter.title,
+    summary: frontmatter.summary,
+    category: frontmatter.category,
+    year: frontmatter.year,
+    featured: frontmatter.featured,
+    status: frontmatter.status,
+    client: frontmatter.client,
+    readingTime: frontmatter.readingTime,
+    tags: frontmatter.tags,
+  };
+}
+
 export function getAllCaseStudies(): readonly CaseStudy[] {
-  return getAllProjects();
+  return getAllMdxCaseStudies()
+    .filter((article) => article.frontmatter.published)
+    .map((article) => toCaseStudy(article.frontmatter));
 }
 
 export function getFeaturedCaseStudies(): CaseStudy[] {
-  return getFeaturedProjects();
+  return getAllMdxCaseStudies()
+    .filter(
+      (article) =>
+        article.frontmatter.published &&
+        article.frontmatter.featured
+    )
+    .map((article) => toCaseStudy(article.frontmatter));
 }
 
 /**
@@ -29,13 +51,19 @@ export function getFeaturedCaseStudies(): CaseStudy[] {
 export function getCaseStudyBySlug(
   slug: string
 ): CaseStudy | undefined {
-  return getProjectBySlug(slug);
+  const article = getMdxCaseStudyBySlug(slug);
+
+  if (!article || !article.frontmatter.published) {
+    return undefined;
+  }
+
+  return toCaseStudy(article.frontmatter);
 }
 
 export function getCaseStudyMetadata(
   slug: string
 ): CaseStudy | undefined {
-  return getProjectBySlug(slug);
+  return getCaseStudyBySlug(slug);
 }
 
 export function getPublishedCaseStudyBySlug(

@@ -20,7 +20,7 @@ export function Footer() {
             </h2>
 
             <p className="mt-2 max-w-md text-sm text-black/70">
-              {site.title}
+              {site.description}
             </p>
 
             <p className="mt-4 text-sm text-black/50">
