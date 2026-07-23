@@ -5,6 +5,7 @@ import { MDXContent } from "@/components/mdx/MDXContent";
 import { Container } from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { articleSchema } from "@/lib/structured-data";
 
 import {
   getPublishedCaseStudies,
@@ -19,7 +20,7 @@ type CaseStudyPageProps = {
 
 export async function generateStaticParams() {
   return getPublishedCaseStudies().map((caseStudy) => ({
-    slug: caseStudy.metadata.slug,
+    slug: caseStudy.frontmatter.slug,
   }));
 }
 
@@ -37,8 +38,31 @@ export async function generateMetadata({
   }
 
   return {
-    title: caseStudy.metadata.title,
-    description: caseStudy.metadata.summary,
+    title: caseStudy.frontmatter.title,
+    description: caseStudy.frontmatter.summary,
+
+    openGraph: {
+      title: caseStudy.frontmatter.title,
+      description: caseStudy.frontmatter.summary,
+      url: `/work/${caseStudy.frontmatter.slug}`,
+      type: "article",
+
+      images: [
+        {
+          url: caseStudy.frontmatter.ogImage,
+          width: 1200,
+          height: 630,
+          alt: caseStudy.frontmatter.title,
+        },
+      ],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: caseStudy.frontmatter.title,
+      description: caseStudy.frontmatter.summary,
+      images: [caseStudy.frontmatter.ogImage],
+    },
   };
 }
 
@@ -53,13 +77,20 @@ export default async function CaseStudyPage({
     notFound();
   }
 
+  const article = articleSchema(caseStudy.frontmatter);
   return (
     <Section spacing="spacious">
       <Container>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(article),
+          }}
+        />
         <SectionHeading
-          eyebrow={caseStudy.metadata.category}
-          title={caseStudy.metadata.title}
-          description={caseStudy.metadata.summary}
+          eyebrow={caseStudy.frontmatter.category}
+          title={caseStudy.frontmatter.title}
+          description={caseStudy.frontmatter.summary}
           divider="heartbeat"
         />
 
@@ -67,18 +98,18 @@ export default async function CaseStudyPage({
           <dl className="grid gap-8 sm:grid-cols-3">
             <div>
               <dt className="label">Year</dt>
-              <dd className="mt-2">{caseStudy.metadata.year}</dd>
+              <dd className="mt-2">{caseStudy.frontmatter.year}</dd>
             </div>
 
             <div>
               <dt className="label">Status</dt>
-              <dd className="mt-2">{caseStudy.metadata.status}</dd>
+              <dd className="mt-2">{caseStudy.frontmatter.status}</dd>
             </div>
 
             <div>
               <dt className="label">Reading Time</dt>
               <dd className="mt-2">
-                {caseStudy.metadata.readingTime}
+                {caseStudy.frontmatter.readingTime}
               </dd>
             </div>
           </dl>

@@ -45,12 +45,11 @@ export type CaseStudyFrontmatter = {
   readingTime: string;
 
   featuredImage: string;
+
+  ogImage: string;
 };
 
 export type PublishedCaseStudy = {
-  metadata: CaseStudy;
-
   frontmatter: CaseStudyFrontmatter;
-
   source: string;
 };

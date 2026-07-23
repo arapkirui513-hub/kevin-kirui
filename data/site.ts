@@ -6,6 +6,31 @@ export const site = {
 
   url: "https://kevinkirui.com",
 
+  author: {
+    name: "Kevin Kirui",
+    role: "Healthcare AI Product Systems Specialist",
+    email: "kiruikevin388@gmail.com",
+  },
+
+  social: {
+    github: "https://github.com/arapkirui513-hub",
+    linkedin: "https://www.linkedin.com/in/kevin-kirui-ba9593275/",
+  },
+
+  seo: {
+    defaultImage: "/images/og/portfolio-og.png",
+    keywords: [
+      "Healthcare AI",
+      "Healthcare AI Product",
+      "Clinical Workflows",
+      "Workflow Intelligence",
+      "Biomedical Engineering",
+      "Healthcare Operations",
+      "Healthcare Systems",
+      "Artificial Intelligence",
+    ],
+  },
+
   work: {
     eyebrow: "My Work",
 

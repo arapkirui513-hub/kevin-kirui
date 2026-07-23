@@ -1,5 +1,3 @@
-import { getProjectBySlug } from "@/data/projects";
-
 import {
   getAllMdxCaseStudies,
   getMdxCaseStudyBySlug,
@@ -69,15 +67,13 @@ export function getCaseStudyMetadata(
 export function getPublishedCaseStudyBySlug(
   slug: string
 ): PublishedCaseStudy | null {
-  const metadata = getProjectBySlug(slug);
   const article = getMdxCaseStudyBySlug(slug);
 
-  if (!metadata || !article) {
+  if (!article || !article.frontmatter.published) {
     return null;
   }
 
   return {
-    metadata,
     frontmatter: article.frontmatter,
     source: article.source,
   };
@@ -85,25 +81,9 @@ export function getPublishedCaseStudyBySlug(
 
 export function getPublishedCaseStudies(): PublishedCaseStudy[] {
   return getAllMdxCaseStudies()
-    .map((article) => {
-      const metadata = getProjectBySlug(
-        article.frontmatter.slug
-      );
-
-      if (!metadata) {
-        return null;
-      }
-
-      return {
-        metadata,
-        frontmatter: article.frontmatter,
-        source: article.source,
-      };
-    })
-    .filter(
-      (
-        study
-      ): study is PublishedCaseStudy =>
-        study !== null
-    );
+    .filter((article) => article.frontmatter.published)
+    .map((article) => ({
+      frontmatter: article.frontmatter,
+      source: article.source,
+    }));
 }
