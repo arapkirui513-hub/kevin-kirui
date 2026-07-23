@@ -4,7 +4,7 @@ export const site = {
   description:
     "Healthcare AI Product Systems Specialist designing workflow-first AI systems for clinical environments.",
 
-  url: "https://kevinkirui.com",
+  url: "https://kevin-kirui.vercel.app",
 
   author: {
     name: "Kevin Kirui",

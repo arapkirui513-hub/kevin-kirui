@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { articleSchema } from "@/lib/structured-data";
+import { TextLink } from "@/components/ui/TextLink";
 
 import {
   getPublishedCaseStudies,
@@ -81,12 +82,21 @@ export default async function CaseStudyPage({
   return (
     <Section spacing="spacious">
       <Container>
+        <TextLink
+          href="/work"
+          showArrow={false}
+          className="mb-8 inline-flex"
+        >
+          ← Back to Work
+        </TextLink>
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(article),
           }}
         />
+        
         <SectionHeading
           eyebrow={caseStudy.frontmatter.category}
           title={caseStudy.frontmatter.title}
