@@ -65,9 +65,9 @@ The current implementation exhibits the following observable architectural chara
 
 # Related ADRs
 
-- 🔗 ADR-001 — Content Pipeline *(Proposed)*
-- 🔗 ADR-002 — Routing Strategy *(Proposed)*
-- 🔗 ADR-003 — Rendering Strategy *(Proposed)*
+- 🔗 ADR-001 — Content Pipeline *(Implemented)*
+- 🔗 ADR-002 — Routing Strategy *(Implemented)*
+- 🔗 ADR-003 — Rendering Strategy *(Implemented)*
 
 ---
 
@@ -118,13 +118,13 @@ The current implementation also exhibits the following characteristics:
 - Tailwind CSS follows the CSS-first configuration introduced in Tailwind CSS v4.
 
 > 🔗 **Related ADR**  
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related ADR**  
-> ADR-002 – Routing Strategy *(Proposed)*
+> ADR-002 – Routing Strategy *(Implemented)*
 
 > 🔗 **Related ADR**  
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 # Repository Structure
 
@@ -203,7 +203,7 @@ Observable responsibilities include:
 The current implementation includes a temporary compatibility function (`getCaseStudyBySlug`) retained to support existing consumers during an incremental migration.
 
 > 🔗 **Related ADR**  
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 ## Static Assets
 
@@ -234,10 +234,10 @@ Engineering documentation follows the governance model defined by PEH Standard v
 ---
 
 > 🔗 **Related ADR**  
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related ADR**  
-> ADR-002 – Routing Strategy *(Proposed)*
+> ADR-002 – Routing Strategy *(Implemented)*
 
 # Application Architecture
 
@@ -367,13 +367,13 @@ The current application architecture exhibits the following characteristics.
 - Structured data generated alongside rendered pages.
 
 > 🔗 **Related ADR**  
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related ADR**  
-> ADR-002 – Routing Strategy *(Proposed)*
+> ADR-002 – Routing Strategy *(Implemented)*
 
 > 🔗 **Related ADR**  
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 # Content Architecture
 
@@ -442,7 +442,7 @@ The content layer currently includes a temporary compatibility function (`getCas
 This compatibility layer remains part of the observable implementation.
 
 > 🔗 **Related ADR**
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 ## MDX Rendering
 
@@ -480,7 +480,7 @@ The table of contents and rendered heading anchors are generated through separat
 This behavior is an observable characteristic of the current implementation.
 
 > 🔗 **Related ADR**
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 ## Metadata Integration
 
@@ -513,10 +513,10 @@ The content architecture currently exhibits the following characteristics.
 - Shared metadata reused across presentation and SEO layers.
 
 > 🔗 **Related ADR**
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related ADR**
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 # Component Architecture
 
@@ -616,10 +616,10 @@ The current component architecture exhibits the following characteristics.
 - Composition-based page construction.
 
 > 🔗 **Related ADR**  
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related ADR**  
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 # Data Flow
 
@@ -680,7 +680,7 @@ The observable workflow is:
 Application routes consume these shared models rather than reading MDX files directly.
 
 > 🔗 **Related ADR**  
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 ## Page Generation Flow
 
@@ -779,10 +779,10 @@ The current data flow exhibits the following characteristics.
 - Static page generation through shared application models.
 
 > 🔗 **Related ADR**  
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related ADR**  
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 # Rendering Strategy
 
@@ -818,7 +818,7 @@ Each published case study is rendered as an individual static page.
 Routes not returned by `generateStaticParams()` are not generated as part of the static build.
 
 > 🔗 **Related ADR**
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 ## Dynamic Metadata Generation
 
@@ -893,7 +893,7 @@ The current rendering strategy exhibits the following characteristics.
 - Component-based page assembly.
 
 > 🔗 **Related ADR**
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 # Styling System
 
@@ -989,10 +989,10 @@ The styling system currently exhibits the following characteristics.
 ---
 
 > 🔗 **Related ADR**  
-> ADR-002 – Routing Strategy *(Proposed)*
+> ADR-002 – Routing Strategy *(Implemented)*
 
 > 🔗 **Related ADR**  
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 
 # SEO Architecture
@@ -1115,10 +1115,10 @@ The current SEO architecture exhibits the following characteristics.
 - Unused `breadcrumbSchema` helper present in the repository.
 
 > 🔗 **Related ADR**  
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related ADR**  
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 # Reading Experience
 
@@ -1212,10 +1212,10 @@ The current reading subsystem exhibits the following characteristics.
 - MDX-integrated reading enhancements.
 
 > 🔗 **Related ADR**  
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related ADR**  
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 # Extension Strategy
 
@@ -1239,7 +1239,7 @@ Observable extension points include:
 Content discovery continues to be managed through the shared content loading libraries.
 
 > 🔗 **Related ADR**
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 ---
 
@@ -1276,7 +1276,7 @@ Observable extension points include:
 Route discovery continues to follow the App Router conventions implemented throughout the repository.
 
 > 🔗 **Related ADR**
-> ADR-002 – Routing Strategy *(Proposed)*
+> ADR-002 – Routing Strategy *(Implemented)*
 
 ---
 
@@ -1295,7 +1295,7 @@ Observable extension points include:
 The rendering pipeline remains centralized within the shared MDX renderer.
 
 > 🔗 **Related ADR**
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 ---
 
@@ -1346,9 +1346,9 @@ These extension points are implemented within the current repository and do not 
 
 # Related ADRs
 
-- 🔗 ADR-001 – Content Pipeline *(Proposed)*
-- 🔗 ADR-002 – Routing Strategy *(Proposed)*
-- 🔗 ADR-003 – Rendering Strategy *(Proposed)*
+- 🔗 ADR-001 – Content Pipeline *(Implemented)*
+- 🔗 ADR-002 – Routing Strategy *(Implemented)*
+- 🔗 ADR-003 – Rendering Strategy *(Implemented)*
 
 ---
 

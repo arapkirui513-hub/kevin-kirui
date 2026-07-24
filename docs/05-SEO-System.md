@@ -132,10 +132,10 @@ The SEO System is not responsible for:
 These responsibilities are documented in other chapters of the Portfolio Engineering Handbook.
 
 > 🔗 **Related ADR**
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related ADR**
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 # SEO Processing Lifecycle
 
@@ -232,10 +232,10 @@ The current SEO processing lifecycle exhibits the following characteristics.
 - Search engine discovery resources published independently from page metadata.
 
 > 🔗 **Related ADR**
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related ADR**
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 # Metadata Sources
 
@@ -345,7 +345,7 @@ The current metadata source model exhibits the following characteristics.
 - Single authoritative source for each metadata domain.
 
 > 🔗 **Related ADR**
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related Documents**
 > 04-Case-Study-System.md
@@ -467,10 +467,10 @@ The current metadata transformation layer exhibits the following characteristics
 - Independent structured representations for Person, WebSite, and Article metadata.
 
 > 🔗 **Related ADR**
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related ADR**
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 # Metadata Publication
 
@@ -591,7 +591,7 @@ The current metadata publication implementation exhibits the following character
 - Consistent publication model for site-level and page-level metadata.
 
 > 🔗 **Related ADR**
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 > 🔗 **Related Documents**
 > 02-Architecture.md
@@ -720,10 +720,10 @@ The current structured data implementation exhibits the following characteristic
 - Unused breadcrumb transformation present within the implementation.
 
 > 🔗 **Related ADR**
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related ADR**
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 # Open Graph and Social Metadata
 
@@ -843,7 +843,7 @@ The current Open Graph implementation exhibits the following characteristics.
 - Metadata publication through the Next.js Metadata API.
 
 > 🔗 **Related ADR**
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 > 🔗 **Related Documents**
 > 04-Case-Study-System.md
@@ -970,7 +970,7 @@ The current Metadata Route implementation exhibits the following characteristics
 - Independent publication from page rendering.
 
 > 🔗 **Related ADR**
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related Documents**
 > 04-Case-Study-System.md
@@ -1100,10 +1100,10 @@ The current Search Engine Outputs exhibit the following characteristics.
 - Published outputs derived from centralized application metadata.
 
 > 🔗 **Related ADR**
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related ADR**
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 # Validation Rules
 
@@ -1214,7 +1214,7 @@ The current validation model exhibits the following characteristics.
 - No dedicated runtime SEO validation subsystem.
 
 > 🔗 **Related ADR**
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related Documents**
 > 04-Case-Study-System.md
@@ -1324,10 +1324,10 @@ The current extension model exhibits the following characteristics.
 Future evolution of the SEO System can occur within these observable extension points without requiring changes to the overall subsystem structure.
 
 > 🔗 **Related ADR**
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related ADR**
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 # Related ADRs
 
@@ -1337,8 +1337,8 @@ This chapter documents the observable implementation of the SEO System. Engineer
 
 | ADR | Relationship |
 |-----|--------------|
-| ADR-001 – Content Pipeline *(Proposed)* | Documents the architectural decisions governing content processing, metadata production, and the content publication pipeline consumed by the SEO System. |
-| ADR-003 – Rendering Strategy *(Proposed)* | Documents the rendering strategy that determines how metadata, structured data, Metadata Routes, and page outputs are published within the application. |
+| ADR-001 – Content Pipeline *(Implemented)* | Documents the architectural decisions governing content processing, metadata production, and the content publication pipeline consumed by the SEO System. |
+| ADR-003 – Rendering Strategy *(Implemented)* | Documents the rendering strategy that determines how metadata, structured data, Metadata Routes, and page outputs are published within the application. |
 
 This chapter intentionally references ADRs rather than repeating engineering rationale.
 

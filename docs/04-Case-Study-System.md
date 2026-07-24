@@ -99,10 +99,10 @@ The observable implementation currently exhibits the following characteristics.
 - Reusable content consumed by multiple application subsystems.
 
 > 🔗 **Related ADR**  
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related ADR**  
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 # Case Study Lifecycle
 
@@ -183,7 +183,7 @@ The implementation reads MDX files from disk before parsing document metadata an
 Only published case studies continue through the remainder of the processing pipeline.
 
 > 🔗 **Related ADR**  
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 ---
 
@@ -222,7 +222,7 @@ Static routes are generated for each published case study during the build proce
 Each generated route represents an individual case study page.
 
 > 🔗 **Related ADR**  
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 ---
 
@@ -285,10 +285,10 @@ The current lifecycle exhibits the following characteristics.
 - Deterministic processing from authored document to published page.
 
 > 🔗 **Related ADR**  
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related ADR**  
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 # Content Organization
 
@@ -393,7 +393,7 @@ The current content organization exhibits the following characteristics.
 - Self-contained publication units.
 
 > 🔗 **Related ADR**  
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related Documents**
 > case-study-publishing-specification.md
@@ -427,7 +427,7 @@ Application Consumers
 Rather than exposing raw MDX files to the application, the content pipeline transforms authored documents into structured objects shared across multiple subsystems.
 
 > 🔗 **Related ADR**  
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 ## Model Components
 
@@ -509,7 +509,7 @@ The current case study model exhibits the following characteristics.
 - Single authoritative representation after parsing.
 
 > 🔗 **Related ADR**  
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 # Content Discovery
 
@@ -545,7 +545,7 @@ Case Study Model
 Each stage transforms repository content into structured application data while maintaining the authored MDX document as the system's source of truth.
 
 > 🔗 **Related ADR**  
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 ---
 
@@ -639,7 +639,7 @@ The current content discovery implementation exhibits the following characterist
 - Single discovery interface shared across multiple application layers.
 
 > 🔗 **Related ADR**  
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 # Publishing Pipeline
 
@@ -678,7 +678,7 @@ Application Consumers
 Each stage contributes to preparing authored content for use throughout the application.
 
 > 🔗 **Related ADR**  
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 ---
 
@@ -769,7 +769,7 @@ The publishing pipeline concludes once a published case study model has been pro
 Subsequent rendering and presentation responsibilities are documented separately within the Rendering Integration section.
 
 > 🔗 **Related ADR**  
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related Documents**  
 > case-study-publishing-specification.md
@@ -811,7 +811,7 @@ Published Page
 Each stage consumes the structured case study model produced by the publishing pipeline.
 
 > 🔗 **Related ADR**  
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 ---
 
@@ -907,7 +907,7 @@ The current rendering integration exhibits the following characteristics.
 - Reusable rendering pipeline.
 
 > 🔗 **Related ADR**  
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 > 🔗 **Related Documents**  
 > 02-Architecture.md  
@@ -942,7 +942,7 @@ Metadata API      Open Graph     JSON-LD      XML Sitemap
 Each consumer derives metadata from the same structured case study model.
 
 > 🔗 **Related ADR**  
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 ---
 
@@ -1040,7 +1040,7 @@ The current metadata integration exhibits the following characteristics.
 - Shared Open Graph and featured image assets.
 
 > 🔗 **Related ADR**  
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related Documents**  
 > 02-Architecture.md  
@@ -1139,7 +1139,7 @@ The relationship between the publishing specification and the Case Study System 
 - Single publishing specification referenced by the subsystem.
 
 > 🔗 **Related ADR**
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related Documents**
 > case-study-publishing-specification.md
@@ -1248,7 +1248,7 @@ The current validation implementation exhibits the following characteristics.
 No additional runtime validation mechanisms have been observed within the current implementation.
 
 > 🔗 **Related ADR**
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related Documents**
 > case-study-publishing-specification.md
@@ -1307,7 +1307,7 @@ Observable extension points include:
 These extensions do not require changes to authored Markdown syntax beyond the use of supported MDX components.
 
 > 🔗 **Related ADR**  
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 ---
 
@@ -1367,10 +1367,10 @@ The current extension model exhibits the following characteristics.
 - Extension through existing subsystem interfaces rather than architectural restructuring.
 
 > 🔗 **Related ADR**  
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related ADR**  
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 > 🔗 **Related Documents**  
 > case-study-publishing-specification.md
@@ -1381,8 +1381,8 @@ The following Architecture Decision Records provide implementation rationale for
 
 | ADR | Relationship |
 |-----|--------------|
-| ADR-001 – Content Pipeline *(Proposed)* | Documents the engineering rationale behind the repository-managed content pipeline, content discovery, and shared content loading architecture described throughout this chapter. |
-| ADR-003 – Rendering Strategy *(Proposed)* | Documents the engineering rationale for the rendering pipeline, MDX integration, and static page generation consumed by the Case Study System. |
+| ADR-001 – Content Pipeline *(Implemented)* | Documents the engineering rationale behind the repository-managed content pipeline, content discovery, and shared content loading architecture described throughout this chapter. |
+| ADR-003 – Rendering Strategy *(Implemented)* | Documents the engineering rationale for the rendering pipeline, MDX integration, and static page generation consumed by the Case Study System. |
 
 This chapter intentionally references these ADRs rather than duplicating architectural rationale, in accordance with the Cross-Reference Policy defined in **00-Handbook-Standards.md**.
 

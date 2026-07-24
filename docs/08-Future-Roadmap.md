@@ -92,7 +92,9 @@ These remain documented within the Engineering Journal, Architecture Decision Re
 
 ## Current Planning State
 
-At the time of writing, the observable roadmap consists primarily of handbook completion activities, Architecture Decision Record completion, and supporting documentation identified within the repository.
+At the time of writing, the observable roadmap consists of handbook documentation activities and supporting resources identified within the repository.
+
+The Architecture Decision Records (ADR-001, ADR-002, ADR-003) have been completed and are recorded in the Implemented lifecycle state. They no longer appear as active roadmap items.
 
 The Future Roadmap records only engineering work that can be supported by observable repository evidence.
 
@@ -112,7 +114,7 @@ The current Future Roadmap exhibits the following characteristics.
 
 The Future Roadmap records identified engineering work that has not yet been completed within the portfolio repository or the Portfolio Engineering Handbook.
 
-Each roadmap item is derived from observable repository evidence, including incomplete handbook records, proposed Architecture Decision Records (ADRs), or other documented planning artifacts.
+Each roadmap item is derived from observable repository evidence, including incomplete handbook records or other documented planning artifacts.
 
 The Future Roadmap records these activities while the Git repository and governed handbook records remain the authoritative sources for engineering progress.
 
@@ -145,9 +147,10 @@ At the time of writing, the observable roadmap consists of engineering work that
 
 Current planning evidence includes:
 
-- Proposed Architecture Decision Records containing incomplete sections.
 - Handbook records that remain incomplete.
 - Supporting documentation identified within the repository.
+
+Architecture Decision Records have been finalized and are no longer part of the active roadmap.
 
 Completed engineering work is recorded separately within the Engineering Journal.
 
@@ -160,7 +163,6 @@ The Git repository and governed handbook records maintain:
 - Repository history.
 - Current engineering state.
 - Documented placeholders.
-- Planned Architecture Decision Records.
 
 The Future Roadmap maintains:
 
@@ -187,9 +189,11 @@ The current roadmap lifecycle exhibits the following characteristics.
 
 The Future Roadmap records engineering work that has been identified within the repository but has not yet been completed.
 
-Each roadmap item is supported by observable repository evidence, including incomplete handbook records, proposed Architecture Decision Records (ADRs), or documented placeholders.
+Each roadmap item is supported by observable repository evidence, including incomplete handbook records or documented placeholders.
 
 The Future Roadmap does not introduce speculative engineering work or undocumented feature requests.
+
+Architecture Decision Records (ADR-001, ADR-002, ADR-003) have been completed with Implemented status and are no longer recorded as active roadmap items.
 
 ---
 
@@ -197,15 +201,12 @@ The Future Roadmap does not introduce speculative engineering work or undocument
 
 | ID | Planned Work | Repository Evidence | Planning Status | Related Records |
 |----|--------------|---------------------|-----------------|-----------------|
-| RW-001 | Complete ADR-001 – Content Pipeline | ADR-001 contains `TBD` sections and `Pending` decision status. | Planned | ADR-001, 03-Decision-Log.md |
-| RW-002 | Complete ADR-002 – Routing Strategy | ADR-002 contains `TBD` sections and `Pending` decision status. | Planned | ADR-002, 03-Decision-Log.md |
-| RW-003 | Complete ADR-003 – Rendering Strategy | ADR-003 contains `TBD` sections and `Pending` decision status. | Planned | ADR-003, 03-Decision-Log.md |
-| RW-004 | Complete Future Roadmap documentation | `08-Future-Roadmap.md` exists as an incomplete handbook record. | In Progress | 08-Future-Roadmap.md |
-| RW-005 | Complete Developer Guide | `09-Developer-Guide.md` exists as an untracked handbook record. | Planned | 09-Developer-Guide.md |
-| RW-006 | Complete Engineering Journal | `10-Engineering-Journal.md` exists as an untracked handbook record. | In Progress | 10-Engineering-Journal.md |
-| RW-007 | Complete Engineering Principles | `01-Engineering-Principles.md` exists as an untracked handbook record requiring handbook integration. | Planned | 01-Engineering-Principles.md |
-| RW-008 | Complete handbook glossary | `glossary.md` exists as an empty handbook record. | Planned | glossary.md |
-| RW-009 | Update handbook README | `README.md` requires alignment with the current handbook structure. | Planned | README.md |
+| RW-001 | Complete Future Roadmap documentation | `08-Future-Roadmap.md` maintained as a governed handbook record. | In Progress | 08-Future-Roadmap.md |
+| RW-002 | Complete Developer Guide | `09-Developer-Guide.md` exists as a governed handbook record. | Planned | 09-Developer-Guide.md |
+| RW-003 | Complete Engineering Journal | `10-Engineering-Journal.md` exists as a governed handbook record. | In Progress | 10-Engineering-Journal.md |
+| RW-004 | Complete Engineering Principles | `01-Engineering-Principles.md` exists as a governed handbook record. | Planned | 01-Engineering-Principles.md |
+| RW-005 | Complete handbook glossary | `glossary.md` maintained as a handbook reference document. | Planned | glossary.md |
+| RW-006 | Update handbook README | `README.md` requires alignment with the current handbook structure. | Planned | README.md |
 
 ---
 
@@ -213,10 +214,10 @@ The Future Roadmap does not introduce speculative engineering work or undocument
 
 The current roadmap consists primarily of:
 
-- Architecture Decision Record completion.
-- Handbook completion.
-- Engineering governance completion.
+- Handbook documentation completion.
 - Supporting documentation completion.
+
+Architecture Decision Record completion has been removed from the active roadmap following the finalization of ADR-001, ADR-002, and ADR-003.
 
 No implementation features or product enhancements are recorded unless supported by observable repository evidence.
 
@@ -286,7 +287,6 @@ The Git repository and governed handbook records maintain:
 - Repository history.
 - Current engineering state.
 - Documented placeholders.
-- Planned Architecture Decision Records.
 - Existing handbook documentation.
 
 The Future Roadmap maintains:
@@ -346,7 +346,7 @@ These documents provide complementary architectural, governance, implementation,
 | Document | Relationship |
 |----------|--------------|
 | 00-Handbook-Standards.md | Defines the documentation standards, governance model, roadmap policy, and revision practices followed by the Future Roadmap. |
-| 03-Decision-Log.md | Records the Architecture Decision Record repository containing proposed ADRs identified as planned engineering work. |
+| 03-Decision-Log.md | Records the Architecture Decision Record repository containing implemented ADRs that provide architectural context for planned engineering work. |
 | 07-Release-History.md | Records completed software releases that provide historical context for planned engineering work. |
 | 10-Engineering-Journal.md | Records completed engineering activities after roadmap items have been implemented. |
 | 09-Developer-Guide.md | Documents engineering practices and maintenance guidance associated with planned engineering work. |
@@ -358,7 +358,7 @@ The following repository records provide the primary evidence for this chapter.
 |-------------------|--------------|
 | Git Repository | Records the current engineering state from which planned work is identified. |
 | Git Commit History | Records completed engineering work and distinguishes it from planned activities. |
-| Architecture Decision Records (ADRs) | Record proposed architectural decisions that remain incomplete and therefore appear as roadmap items. |
+| Architecture Decision Records (ADRs) | Record implemented architectural decisions that provide context for planned engineering work. |
 
 The Future Roadmap records identified engineering work without reproducing implementation history, release history, or completed engineering activities maintained elsewhere within the Portfolio Engineering Handbook.
 
@@ -375,6 +375,8 @@ The Future Roadmap records identified engineering work without reproducing imple
 This chapter has been reviewed against the current Git repository, Architecture Decision Records (ADRs), and governed handbook records maintained within the Portfolio Engineering Handbook.
 
 The Future Roadmap accurately reflects the observable planning state at the time of writing, including identified engineering work, planning status, roadmap relationships, and planning governance.
+
+Architecture Decision Records (ADR-001, ADR-002, ADR-003) have been completed and are no longer recorded as active roadmap items.
 
 The Git repository and governed handbook records remain the authoritative sources for completed engineering work, repository history, architectural decisions, and implementation documentation.
 

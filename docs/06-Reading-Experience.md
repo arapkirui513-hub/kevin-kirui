@@ -95,10 +95,10 @@ Each layer has a distinct responsibility and communicates through observable dat
 The subsystem exhibits a parallel processing model. Heading processing and content rendering both consume the same MDX source independently, while navigation and reading progress consume the outputs of those processing layers to produce the complete reading interface.
 
 > 🔗 **Related Record**
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related Record**
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 # Reading Experience Lifecycle
 
@@ -211,10 +211,10 @@ The current Reading Experience lifecycle exhibits the following characteristics.
 - Each lifecycle stage has a distinct responsibility.
 
 > 🔗 **Related Record**
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related Record**
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 # Reading Sources
 
@@ -306,7 +306,7 @@ The current implementation exhibits the following source characteristics.
 - Navigation consumes derived metadata rather than the original MDX source.
 
 > 🔗 **Related Record**
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related Documents**
 > 04-Case-Study-System.md
@@ -424,10 +424,10 @@ The current heading processing implementation exhibits the following characteris
 - Deterministic identifier normalization.
 
 > 🔗 **Related Record**
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related Record**
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 # Content Rendering
 
@@ -541,10 +541,10 @@ The current rendering implementation exhibits the following characteristics.
 - Separation of rendering and presentation responsibilities.
 
 > 🔗 **Related Record**
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related Record**
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 # Navigation System
 
@@ -674,10 +674,10 @@ The current Navigation System exhibits the following characteristics.
 - Graceful handling of empty heading collections.
 
 > 🔗 **Related Record**
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related Record**
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 # Reading Progress
 
@@ -801,7 +801,7 @@ The current Reading Progress implementation exhibits the following characteristi
 - Separation of progress tracking and navigation.
 
 > 🔗 **Related Record**
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 # Presentation Layer
 
@@ -944,7 +944,7 @@ The current Presentation Layer exhibits the following characteristics.
 - Separation of rendering and presentation responsibilities.
 
 > 🔗 **Related Record**
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 # Observable Characteristics
 
@@ -1057,10 +1057,10 @@ The current Reading Experience subsystem exhibits the following observable chara
 These characteristics describe the current implementation without expressing engineering rationale or future design intentions.
 
 > 🔗 **Related Record**
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related Record**
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 # Validation Rules
 
@@ -1179,10 +1179,10 @@ The current validation model exhibits the following characteristics.
 - No dedicated runtime validation subsystem.
 
 > 🔗 **Related Record**
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related Record**
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 # Extension Points
 
@@ -1279,10 +1279,10 @@ The current extension model exhibits the following characteristics.
 Future evolution of the Reading Experience subsystem can occur within these observable extension points without requiring changes to the overall subsystem architecture.
 
 > 🔗 **Related Record**
-> ADR-001 – Content Pipeline *(Proposed)*
+> ADR-001 – Content Pipeline *(Implemented)*
 
 > 🔗 **Related Record**
-> ADR-003 – Rendering Strategy *(Proposed)*
+> ADR-003 – Rendering Strategy *(Implemented)*
 
 # Related ADRs
 
@@ -1292,8 +1292,8 @@ This chapter documents the observable implementation of the Reading Experience s
 
 | ADR | Relationship |
 |-----|--------------|
-| ADR-001 – Content Pipeline *(Proposed)* | Documents the architectural decisions governing MDX content processing, heading extraction, and the content pipeline consumed by the Reading Experience subsystem. |
-| ADR-003 – Rendering Strategy *(Proposed)* | Documents the rendering strategy governing MDX compilation, component rendering, client-side reading components, and page composition. |
+| ADR-001 – Content Pipeline *(Implemented)* | Documents the architectural decisions governing MDX content processing, heading extraction, and the content pipeline consumed by the Reading Experience subsystem. |
+| ADR-003 – Rendering Strategy *(Implemented)* | Documents the rendering strategy governing MDX compilation, component rendering, client-side reading components, and page composition. |
 
 This chapter intentionally references ADRs rather than repeating engineering rationale.
 

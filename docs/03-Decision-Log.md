@@ -1,3 +1,5 @@
+---
+
 # Decision Log
 
 > Index of all Architecture Decision Records.
@@ -76,24 +78,20 @@ These remain within the corresponding Architecture Decision Record.
 
 ## Current Repository State
 
-At the time of writing, the Architecture Decision Record repository consists of Proposed ADRs following a common document structure.
+At the time of writing, the Architecture Decision Record repository consists of Implemented ADRs documenting architectural decisions that are verifiable within the repository.
 
-The observable ADR template includes the following sections.
+Each ADR records the context, decision, rationale, trade-offs, and implementation notes for a significant architectural decision.
+
+The current ADR template includes the following sections.
 
 - Context.
-- Problem.
-- Alternatives Considered.
 - Decision.
-- Evidence.
 - Rationale.
 - Trade-offs.
-- Outcome.
+- Implementation Notes.
 - Related ADRs.
-- Related Engineering Principles.
-- Related Documents.
-- Revision History.
 
-The current ADRs defer architectural evidence until Accepted status and therefore serve as governance records rather than completed architectural decisions.
+The current ADRs are implemented and verifiable against the repository codebase.
 
 ---
 
@@ -143,10 +141,10 @@ The Decision Log records lifecycle status for each Architecture Decision Record 
 At the time of writing, every Architecture Decision Record within the repository is recorded with the following lifecycle status.
 
 ```text
-Proposed
+Implemented
 ```
 
-The current repository does not contain Accepted, Superseded, Deprecated, or Rejected Architecture Decision Records.
+The current repository contains three Architecture Decision Records, all of which have been implemented and are verifiable within the repository.
 
 This is an observable characteristic of the current ADR repository.
 
@@ -157,13 +155,10 @@ This is an observable characteristic of the current ADR repository.
 The Architecture Decision Record maintains:
 
 - Decision context.
-- Problem statement.
-- Alternatives considered.
 - Decision.
-- Supporting evidence.
 - Rationale.
 - Trade-offs.
-- Outcome.
+- Implementation notes.
 
 The Decision Log maintains:
 
@@ -199,12 +194,12 @@ The observable status model is shown below.
 
 | Status | Description |
 |--------|-------------|
-| Proposed | Architecture Decision Record created using the approved ADR template. |
+| Implemented | Architecture Decision Record whose decision is implemented and verifiable within the repository. |
 
 At the time of writing, every Architecture Decision Record within the repository is recorded with the status:
 
 ```text
-Proposed
+Implemented
 ```
 
 No additional status values are currently observed within the Architecture Decision Record repository.
@@ -217,9 +212,9 @@ The current repository contains the following Architecture Decision Records.
 
 | ADR | Title | Status |
 |-----|-------|--------|
-| ADR-001 | Content Pipeline | Proposed |
-| ADR-002 | Routing Strategy | Proposed |
-| ADR-003 | Rendering Strategy | Proposed |
+| ADR-001 | Content Pipeline | Implemented |
+| ADR-002 | Routing Strategy | Implemented |
+| ADR-003 | Rendering Strategy | Implemented |
 
 The Decision Log records these lifecycle states without duplicating the architectural content maintained within the individual ADRs.
 
@@ -241,7 +236,7 @@ The current status model exhibits the following characteristics.
 
 - Explicit lifecycle status.
 - One recorded status per ADR.
-- Repository-wide use of the Proposed lifecycle state.
+- Repository-wide use of the Implemented lifecycle state.
 - Status maintained independently from decision content.
 
 # ADR Index
@@ -258,13 +253,13 @@ The ADR Index does not summarize or reproduce architectural decisions. Individua
 
 | ADR | Title | Status | Date | Related Documents |
 |-----|-------|--------|------|-------------------|
-| ADR-001 | Content Pipeline | Proposed | 2026-07-24 | 02-Architecture.md |
-| ADR-002 | Routing Strategy | Proposed | 2026-07-24 | 02-Architecture.md |
-| ADR-003 | Rendering Strategy | Proposed | 2026-07-24 | 02-Architecture.md |
+| ADR-001 | Content Pipeline | Implemented | 2026-07-24 | 02-Architecture.md |
+| ADR-002 | Routing Strategy | Implemented | 2026-07-24 | 02-Architecture.md |
+| ADR-003 | Rendering Strategy | Implemented | 2026-07-24 | 02-Architecture.md |
 
-All Architecture Decision Records currently follow the approved ADR template and are recorded in the Proposed lifecycle state.
+All Architecture Decision Records currently follow the approved ADR template and are recorded in the Implemented lifecycle state.
 
-The current repository does not contain Accepted, Superseded, Deprecated, or Rejected Architecture Decision Records.
+Each ADR documents an architectural decision that is implemented and verifiable within the repository.
 
 ---
 
@@ -319,17 +314,15 @@ Each Architecture Decision Record maintains its own relationships independently.
 
 ## ADR Relationships
 
-The current Architecture Decision Record repository does not record relationships between individual ADRs.
-
-The following relationships are currently observed.
+The current Architecture Decision Record repository records the following relationships between ADRs.
 
 | ADR | Related ADRs |
 |-----|--------------|
-| ADR-001 | None |
-| ADR-002 | None |
-| ADR-003 | None |
+| ADR-001 | ADR-002, ADR-003 |
+| ADR-002 | ADR-001, ADR-003 |
+| ADR-003 | ADR-001, ADR-002 |
 
-The Decision Log records these relationships without introducing additional dependencies.
+These relationships reflect the architectural dependencies recorded within each ADR. The content pipeline (ADR-001) is consumed by the routing strategy (ADR-002) and rendering strategy (ADR-003). The routing strategy (ADR-002) and rendering strategy (ADR-003) are interdependent through the page generation model.
 
 ---
 
@@ -363,8 +356,7 @@ The Decision Log records the existence of these governed records while preservin
 
 The current relationship model exhibits the following characteristics.
 
-- Independent Architecture Decision Records.
-- No recorded inter-ADR dependencies.
+- Inter-ADR dependencies explicitly recorded.
 - Explicit handbook document relationships.
 - Separation between governance records and implementation documentation.
 - Cross-reference consistency across the Portfolio Engineering Handbook.
@@ -407,17 +399,11 @@ Each Architecture Decision Record is maintained as an independent handbook recor
 The current ADR template includes the following governed sections.
 
 - Context.
-- Problem.
-- Alternatives Considered.
 - Decision.
-- Evidence.
 - Rationale.
 - Trade-offs.
-- Outcome.
+- Implementation Notes.
 - Related ADRs.
-- Related Engineering Principles.
-- Related Documents.
-- Revision History.
 
 The Decision Log records the existence and lifecycle status of these governed records.
 
