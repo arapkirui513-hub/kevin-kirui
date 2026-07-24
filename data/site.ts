@@ -18,7 +18,7 @@ export const site = {
   },
 
   seo: {
-    defaultImage: "/images/og/portfolio-og.png",
+    defaultImage: "/images/og/portfolio.jpg",
     keywords: [
       "Healthcare AI",
       "Healthcare AI Product",
