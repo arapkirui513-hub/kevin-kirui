@@ -5,7 +5,7 @@
 **Handbook Version:** 1.0.0  
 **Document Version:** 1.0  
 **Project Version:** 1.5.0  
-**Status:** Approved
+**Status:** Approved  
 **Last Updated:** 2026-07-24
 
 ---
@@ -173,6 +173,8 @@ Acceptable evidence includes:
 
 If a principle cannot be supported by evidence, it should not be included.
 
+This rule applies to Engineering Principles. Governance Principles, which describe how the handbook governs itself rather than how the portfolio was engineered, are not required to satisfy this rule.
+
 ---
 
 # Governance Principles
@@ -193,6 +195,49 @@ As a result:
 - ADR identifiers never change,
 - handbook chapters are append-only,
 - conceptual organization is independent of physical numbering.
+
+## GP-002 — New Record Types Require Governance Before Content
+
+Before introducing a new permanent handbook record type, its governance shall be defined within the handbook standard.
+
+Governance includes:
+
+- purpose,
+- lifecycle,
+- identifier policy,
+- template,
+- evidence requirements,
+- authority,
+- maintenance rules.
+
+Content shall not be authored until these rules have been approved.
+
+---
+
+# Document Responsibilities
+
+Each handbook chapter has a single primary responsibility.
+
+Responsibilities shall not overlap.
+
+| Document | Responsibility |
+|----------|-----------------|
+| Handbook Standards | Governs the handbook. |
+| Architecture | Describes the implemented system. |
+| ADRs | Explain why engineering decisions were made. |
+| Engineering Principles | Capture lessons learned from implementation evidence. |
+| Release History | Records what changed between releases. |
+| Engineering Journal | Records development narrative and observations. |
+
+Engineering rationale shall exist in ADRs.
+
+Architectural description shall exist in Architecture.
+
+Engineering lessons shall exist in Engineering Principles.
+
+Documents should reference one another rather than duplicate content.
+
+Subsystem chapters (04–06) inherit the descriptive responsibility of the Architecture chapter, scoped to their respective subsystem. Reference documents provide supporting information and are not intended to establish engineering rationale.
 
 ---
 
@@ -260,6 +305,16 @@ Changes to one do not automatically require changes to the others.
 
 ---
 
+# Known Limitations
+
+PEH Standard v1.0 intentionally retains the metadata field **Project Version** for compatibility with the handbook templates originally designed during development.
+
+The current repository does not maintain a portfolio release numbering system that corresponds to this field.
+
+A future approved amendment may rename this field to **Portfolio Release** or another governance-approved identifier without affecting the remainder of this standard.
+
+---
+
 # Authority Model
 
 When documentation disagrees:
@@ -283,6 +338,8 @@ Release History summarizes project milestones.
 Engineering Journal provides narrative and lessons learned.
 
 `03-Decision-Log.md` serves only as an ADR index.
+
+Engineering Principle Records are descriptive rather than authoritative and do not participate in this hierarchy. They derive credibility from documented evidence rather than resolving disagreements.
 
 ---
 
@@ -335,6 +392,8 @@ ADRs may be written:
 
 Retrospective ADRs must contain documented evidence rather than relying on memory.
 
+Proposed ADRs may temporarily defer completion of the Evidence section until the ADR reaches Accepted status. The Evidence section becomes mandatory before an ADR may be accepted.
+
 ---
 
 # ADR Status
@@ -345,7 +404,7 @@ Valid values are:
 
 | Status | Meaning |
 |----------|----------|
-| Proposed | Under discussion. |
+| Proposed | Under discussion, or reserved but not yet fully authored. |
 | Accepted | Current architectural decision. |
 | Deprecated | No longer recommended. |
 | Superseded by ADR-XXX | Replaced by a later ADR. |
@@ -390,12 +449,14 @@ Outcome
 
 Related ADRs
 
+Related Engineering Principles
+
 Related Documents
 
 Revision History
 ```
 
-The Evidence section is mandatory.
+The Evidence section is mandatory for ADRs with Accepted status. See ADR Policy for the Proposed-status exception.
 
 ---
 
@@ -403,11 +464,13 @@ The Evidence section is mandatory.
 
 Engineering rationale should exist in one place only.
 
-Documents reference ADRs instead of repeating architectural reasoning.
+Documents should reference the appropriate governed handbook record instead of duplicating reasoning. Architectural rationale belongs in ADRs. Additional governed record types, once approved through a future amendment, follow the same rule.
 
-The 🔗 **Related ADR** callout provides inline references.
+The 🔗 **Related Record** callout provides inline references.
 
 The Related Documents section provides chapter-level navigation.
+
+Records referenced by an inline callout must exist as a file, even if only as a Proposed stub, before the reference is published. The handbook does not knowingly contain references to non-existent records.
 
 ---
 
@@ -447,7 +510,7 @@ The handbook uses a closed set of callouts.
 | 💡 **Engineering Insight** | Design reasoning. |
 | ⚠️ **Trade-off** | Limitation or compromise. |
 | 🧭 **Recommendation** | Preferred guidance. |
-| 🔗 **Related ADR** | Cross-reference to an ADR. |
+| 🔗 **Related Record** | Cross-reference to another governed handbook record (currently ADRs; additional record types may be added by future approved amendment). |
 
 No additional callout styles should be introduced without revising this standard.
 
@@ -509,12 +572,6 @@ New ADRs never require renumbering handbook chapters or existing ADRs.
 
 ---
 
-# Revision History
-
-| Version | Date | Changes |
-|----------|------------|---------------------------------------------------------------|
-| 1.0 | 2026-07-24 | Initial release of the Portfolio Engineering Handbook Standard (PEH Standard v1.0). Established governance model, document standards, ADR policy, authority model, maintenance policy, governance principles, and handbook architecture. |
-
 # Approval
 
 PEH Standard v1.0 is the first approved governance document of the Portfolio Engineering Handbook.
@@ -522,3 +579,13 @@ PEH Standard v1.0 is the first approved governance document of the Portfolio Eng
 All handbook chapters created after this approval shall conform to the standards defined in this document unless superseded by a future approved handbook version.
 
 Future governance changes shall be introduced only through an approved amendment and shall not modify this version retrospectively.
+
+PEH Standard v1.0 serves as the baseline governance document for all subsequent handbook revisions.
+
+---
+
+# Revision History
+
+| Version | Date | Changes |
+|----------|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1.0 | 2026-07-24 | Initial release of the Portfolio Engineering Handbook Standard (PEH Standard v1.0). Established governance model, document standards, ADR policy, authority model, maintenance policy, governance principles, and handbook architecture. |
