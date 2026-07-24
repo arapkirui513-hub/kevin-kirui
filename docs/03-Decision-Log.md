@@ -6,7 +6,7 @@
 
 **Handbook Version:** 1.0.0
 **Document Version:** 1.0.0
-**Project Version:** 1.5.0
+**Project Version:** 1.6.0
 **Status:** Reviewed
 **Last Updated:** 2026-07-24
 
