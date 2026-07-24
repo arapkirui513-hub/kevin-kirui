@@ -1407,3 +1407,13 @@ These documents collectively describe the architectural context, supporting subs
 |---------|------|---------|
 | 1.0 | 2026-07-24 | Initial creation of the Case Study System chapter describing the portfolio's repository-managed content subsystem, publishing pipeline, rendering integration, metadata integration, and extension model. |
 | 1.0 (reviewed) | 2026-07-24 | Added standard document header block. Added `Featured Status` to the Case Study Model's Frontmatter Representation list. Corrected the Document Structure section to reflect the actual observed heading sequence across the three published case studies, and noted the one document's additional `Scope & Limitations` section. |
+
+---
+
+**Document Status:** Reviewed
+
+This chapter has been reviewed against the current repository implementation and accurately reflects the observable Case Study System at the time of writing.
+
+Engineering rationale remains documented within the corresponding Architecture Decision Records (ADRs) in accordance with the Portfolio Engineering Handbook Cross-Reference Policy.
+
+Future revisions to this document should occur only when observable implementation changes affect the Case Study System or its documented interfaces.

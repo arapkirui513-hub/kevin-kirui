@@ -505,3 +505,12 @@ The Decision Log records the existence and lifecycle status of these Architectur
 
 ---
 
+**Document Status:** Reviewed
+
+This chapter has been reviewed against the current Architecture Decision Record repository maintained within the Portfolio Engineering Handbook.
+
+The Decision Log accurately reflects the observable state of the ADR repository at the time of writing, including recorded Architecture Decision Records, lifecycle status, relationships, and governance structure.
+
+Architecture Decision Records remain the authoritative source for architectural decision content, supporting evidence, rationale, trade-offs, and outcomes.
+
+Future revisions to this document should occur only when the Architecture Decision Record repository changes, including the addition of new ADRs, changes to ADR lifecycle status, or updates to recorded relationships between governed handbook records.
