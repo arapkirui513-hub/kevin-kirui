@@ -1,6 +1,6 @@
 export const home = {
   hero: {
-    eyebrow: "Healthcare AI Product Systems Specialist",
+    eyebrow: "Healthcare Workflow & AI Systems Designer",
 
     title:
       "Designing AI systems that help clinicians see the right information at the right moment.",
@@ -34,7 +34,7 @@ export const home = {
     title: "I design systems around workflows, not just software.",
 
     description:
-      "Clinical problems are rarely caused by a lack of information. They're caused by information arriving at the wrong person, in the wrong form, at the wrong time. My work combines healthcare operations, product thinking, and AI systems to reduce cognitive load and help clinicians make confident decisions.",
+      "Clinical problems are rarely caused by a lack of information. They're caused by information arriving at the wrong person, in the wrong form, at the wrong time. My work combines healthcare o[...]",
 
     principles: [
       "Workflow-first design",
