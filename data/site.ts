@@ -2,13 +2,13 @@ export const site = {
   name: "Kevin Kirui",
 
   description:
-    "Healthcare AI Product Systems Specialist designing workflow-first AI systems for clinical environments.",
+    "Healthcare Workflow & AI Systems Designer designing workflow-first AI systems for clinical environments.",
 
   url: "https://kevin-kirui.vercel.app",
 
   author: {
     name: "Kevin Kirui",
-    role: "Healthcare AI Product Systems Specialist",
+    role: "Healthcare Workflow & AI Systems Designer",
     email: "kiruikevin388@gmail.com",
   },
 
