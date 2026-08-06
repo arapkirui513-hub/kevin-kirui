@@ -3,7 +3,7 @@ export const home = {
     eyebrow: "Healthcare Workflow & AI Systems Designer",
 
     title:
-      "Designing AI systems that help clinicians see the right information at the right moment.",
+      "I design systems around workflows, not just software.",
 
     description:
       "I design workflow-first healthcare AI products that transform fragmented clinical information into structured, actionable systems clinicians can actually use.",
@@ -34,7 +34,7 @@ export const home = {
     title: "I design systems around workflows, not just software.",
 
     description:
-      "Clinical problems are rarely caused by a lack of information. They're caused by information arriving at the wrong person, in the wrong form, at the wrong time. My work combines healthcare o[...]",
+      "Clinical problems are rarely caused by a lack of information. They're caused by information arriving at the wrong person, in the wrong form, at the wrong time. I build healthcare and AI systems that close that gap so the right information reaches the right person before delays become patient problems.",
 
     principles: [
       "Workflow-first design",
