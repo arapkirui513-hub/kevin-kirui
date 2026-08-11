@@ -3,10 +3,10 @@
 > Records the chronological history of engineering activities performed during the development of the portfolio application.
 
 **Handbook Version:** 1.0.0
-**Document Version:** 1.0.0
+**Document Version:** 1.0.1
 **Project Version:** 1.6.0
 **Status:** Reviewed
-**Last Updated:** 2026-07-24
+**Last Updated:** 2026-07-29
 
 ---
 
@@ -340,6 +340,7 @@ The Engineering Timeline records repository evolution without reproducing implem
 | 25 | Documented the Future Roadmap. | `3794073` | Documentation Development |
 | 26 | Documented the Developer Guide. | `b85e81e` | Documentation Development |
 | 27 | Documented the Engineering Principles. | `5fe1a78` | Documentation Development |
+| 28 | Verified v1.6.1 maintenance preparation, including CSS token consistency, TypeScript build verification, and roadmap status reconciliation. | Current working tree | Maintenance |
 
 ---
 
@@ -354,6 +355,20 @@ The Engineering Timeline exhibits the following observable characteristics.
 - Coverage of application, feature, governance, documentation, and release activities.
 
 The Git repository remains the authoritative source for engineering chronology, while the Engineering Journal provides the governed historical record within the Portfolio Engineering Handbook.
+
+## Maintenance Verification Evidence
+
+The v1.6.1 maintenance preparation entry was verified using the following commands.
+
+| Verification | Command | Scope | Result |
+|--------------|---------|-------|--------|
+| Restricted local production build | `npm.cmd run build` | Application build from repository root without escalated network access. | Failed because `next/font/google` could not fetch Google Fonts in the restricted local environment. |
+| Network-enabled production build control test | `npm.cmd run build` | Application build from repository root with network access allowed. | Passed, including compilation, TypeScript, page data collection, and static page generation. |
+| Lint verification | `npm.cmd run lint` | Repository lint configuration from project root. | Passed. |
+| Legacy CSS token audit | `rg -n -g '*.css' -g '*.tsx' -g '*.ts' -- "--text|--cyan|--navy"` | All CSS, TSX, and TS files in the repository. | No remaining legacy token references found. |
+| Targeted implementation audit | `rg -n -- "--navy|site\.title|linkedin:|generateMetadata|generateStaticParams|--layout-max-width" app components data styles lib` | Application, component, data, style, and library directories. | Confirmed current usage of `--layout-max-width`, LinkedIn URLs, and dynamic route metadata/static parameter functions; no `--navy` or `site.title` references remained. |
+| Roadmap status audit | `rg -n -- "\*\*Status:\*\*|\*\*Document Status:\*\*|# Purpose|# Revision History" docs\08-Future-Roadmap.md docs\09-Developer-Guide.md docs\10-Engineering-Journal.md docs\01-Engineering-Principles.md docs\glossary.md docs\README.md` | Roadmap and referenced handbook records. | Confirmed referenced handbook records exist and are marked reviewed or active. |
+| Metadata source audit | `rg -n -- "projects\.ts|dual source|duplicate metadata|frontmatter.*source|single source|Single Source|data/projects|case study metadata" docs lib data content app components` and `Get-ChildItem data` | Documentation, source directories, content, and data directory. | Confirmed no current `data/projects.ts` file and case study metadata is documented as MDX-frontmatter-derived. |
 
 # Journal Governance
 
@@ -469,6 +484,7 @@ The Engineering Journal records completed engineering history without reproducin
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.0.1 | 2026-07-29 | Added v1.6.1 maintenance verification evidence, including the exact validation commands, scopes, and observed results used during CSS token consistency and roadmap status reconciliation. |
 | 1.0.0 | 2026-07-24 | Initial implementation of the Engineering Journal documenting the engineering activity model, journal lifecycle, engineering activity categories, chronological engineering timeline, journal governance, and supporting handbook relationships. |
 
 ---
