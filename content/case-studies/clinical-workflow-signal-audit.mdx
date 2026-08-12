@@ -28,6 +28,7 @@ tags:
   - Operational Analytics
 
 repository: "https://github.com/arapkirui513-hub/clinical-workflow-signal-audit"
+demo: "https://workflow-signal-audit.lovable.app"
 
 status: Published
 
@@ -172,6 +173,14 @@ The presentation layer exposes workflow intelligence through role-oriented dashb
 
 The documentation layer connects the simulation specification, generated datasets, evidence reports, project repository, and published case study into a single traceable workflow. This ensures that every reported metric, architectural decision, and implementation outcome can be traced back to reproducible project artefacts, allowing the project to evolve without losing consistency between implementation, evidence, and documentation.
 
+<Figure
+  src="/images/case-studies/clinical-dashboard-overview.png"
+  alt="Clinical Workflow Signal Audit ICU dashboard overview"
+  caption="The ICU dashboard brings signal-to-action latency, active escalations, risk tiers, and workflow data quality into a single operational view."
+  width={1672}
+  height={941}
+/>
+
 ## Technical Implementation
 
 The project was implemented as a reproducible workflow intelligence system centred on simulation, evidence generation, and operational reporting. Rather than treating the dashboard as the primary deliverable, the implementation was structured so that every published metric could be traced back to generated workflow events and reproducible analysis.
@@ -250,6 +259,22 @@ Analysis of the generated dataset produced the following operational results.
 
 </MetricGrid>
 
+<Figure
+  src="/images/case-studies/clinical-escalation-sla.png"
+  alt="Clinical Workflow Signal Audit escalation and SLA tracking"
+  caption="The escalation view makes acknowledgement latency, SLA compliance, escalation state, and channel performance visible across active signals."
+  width={1672}
+  height={941}
+/>
+
+<Figure
+  src="/images/case-studies/clinical-signal-detail.png"
+  alt="Clinical Workflow Signal Audit signal detail and audit trail"
+  caption="The signal detail view traces each workflow event from generation through detection, acknowledgement, action, completion, and follow-up."
+  width={1672}
+  height={941}
+/>
+
 ### Workflow Tier Distribution
 
 The generated workflow events were distributed across four workflow tiers, producing a realistic mix of routine monitoring, clinician review, escalation, and critical activation scenarios.
@@ -281,6 +306,14 @@ The generated workflow events were distributed across four workflow tiers, produ
 />
 
 </MetricGrid>
+
+<Figure
+  src="/images/case-studies/clinical-patient-queue.png"
+  alt="Clinical Workflow Signal Audit patient queue and risk prioritization"
+  caption="The patient queue prioritizes patients by workflow risk tier, surfacing higher-risk cases and their required actions before routine monitoring cases."
+  width={1672}
+  height={941}
+/>
 
 <Callout
   title="Key Result"
