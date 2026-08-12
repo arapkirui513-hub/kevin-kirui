@@ -23,7 +23,7 @@ const variantStyles: Record<CalloutVariant, string> = {
     "border-amber-200 bg-amber-50",
 
   decision:
-    "border-[var(--navy)] bg-slate-50",
+    "border-[var(--color-primary)] bg-slate-50",
 };
 
 export function Callout({
@@ -35,7 +35,7 @@ export function Callout({
     <aside
       className={`my-8 rounded-2xl border-l-4 p-6 ${variantStyles[variant]}`}
     >
-      <h4 className="font-heading text-lg text-[var(--navy)]">
+      <h4 className="font-heading text-lg text-[var(--color-primary)]">
         {title}
       </h4>
 

@@ -39,6 +39,7 @@ export type CaseStudyFrontmatter = {
   tags: readonly string[];
 
   repository: string;
+  demo?: string;
 
   status: CaseStudyStatus;
 

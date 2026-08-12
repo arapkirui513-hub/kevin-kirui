@@ -3,10 +3,10 @@
 > Records identified engineering work that has not yet been completed within the portfolio repository or the Portfolio Engineering Handbook.
 
 **Handbook Version:** 1.0.0
-**Document Version:** 1.0.0
+**Document Version:** 1.0.1
 **Project Version:** 1.6.0
 **Status:** Reviewed
-**Last Updated:** 2026-07-24
+**Last Updated:** 2026-07-29
 
 ---
 
@@ -92,9 +92,11 @@ These remain documented within the Engineering Journal, Architecture Decision Re
 
 ## Current Planning State
 
-At the time of writing, the observable roadmap consists of handbook documentation activities and supporting resources identified within the repository.
+At the time of writing, the observable roadmap consists of maintenance and quality assurance activities identified within the repository.
 
 The Architecture Decision Records (ADR-001, ADR-002, ADR-003) have been completed and are recorded in the Implemented lifecycle state. They no longer appear as active roadmap items.
+
+The handbook documentation completion items previously recorded in this roadmap have been completed. The referenced handbook records now exist and are marked as reviewed.
 
 The Future Roadmap records only engineering work that can be supported by observable repository evidence.
 
@@ -143,12 +145,13 @@ The Future Roadmap records identified engineering work without recording complet
 
 ## Current Lifecycle State
 
-At the time of writing, the observable roadmap consists of engineering work that has been identified but not yet completed.
+At the time of writing, the observable roadmap consists of maintenance work that has been identified but not yet completed.
 
 Current planning evidence includes:
 
-- Handbook records that remain incomplete.
-- Supporting documentation identified within the repository.
+- Current working tree maintenance changes.
+- Quality assurance procedures documented within the Developer Guide.
+- Handbook records that require alignment after maintenance verification.
 
 Architecture Decision Records have been finalized and are no longer part of the active roadmap.
 
@@ -201,12 +204,8 @@ Architecture Decision Records (ADR-001, ADR-002, ADR-003) have been completed wi
 
 | ID | Planned Work | Repository Evidence | Planning Status | Related Records |
 |----|--------------|---------------------|-----------------|-----------------|
-| RW-001 | Complete Future Roadmap documentation | `08-Future-Roadmap.md` maintained as a governed handbook record. | In Progress | 08-Future-Roadmap.md |
-| RW-002 | Complete Developer Guide | `09-Developer-Guide.md` exists as a governed handbook record. | Planned | 09-Developer-Guide.md |
-| RW-003 | Complete Engineering Journal | `10-Engineering-Journal.md` exists as a governed handbook record. | In Progress | 10-Engineering-Journal.md |
-| RW-004 | Complete Engineering Principles | `01-Engineering-Principles.md` exists as a governed handbook record. | Planned | 01-Engineering-Principles.md |
-| RW-005 | Complete handbook glossary | `glossary.md` maintained as a handbook reference document. | Planned | glossary.md |
-| RW-006 | Update handbook README | `README.md` requires alignment with the current handbook structure. | Planned | README.md |
+| RW-007 | Prepare v1.6.1 maintenance release | Current working tree contains CSS token cleanup and documentation roadmap reconciliation. | In Progress | 08-Future-Roadmap.md, 10-Engineering-Journal.md, components/mdx/ |
+| RW-008 | Maintain a manual QA checklist before release | `09-Developer-Guide.md` documents quality assurance procedures, but the release-specific checklist remains manual. | Planned | 09-Developer-Guide.md |
 
 ---
 
@@ -214,10 +213,15 @@ Architecture Decision Records (ADR-001, ADR-002, ADR-003) have been completed wi
 
 The current roadmap consists primarily of:
 
-- Handbook documentation completion.
-- Supporting documentation completion.
+- Maintenance release preparation.
+- Manual quality assurance before release.
+- Documentation alignment following completed verification work.
 
 Architecture Decision Record completion has been removed from the active roadmap following the finalization of ADR-001, ADR-002, and ADR-003.
+
+Handbook completion items have also been removed from the active roadmap because the Future Roadmap, Developer Guide, Engineering Journal, Engineering Principles, glossary, and handbook README are present and marked as reviewed.
+
+No active roadmap item exists for consolidating `projects.ts` with MDX frontmatter because the current repository does not contain `data/projects.ts`; case study metadata is derived from MDX frontmatter through the case study repository layer.
 
 No implementation features or product enhancements are recorded unless supported by observable repository evidence.
 
@@ -366,6 +370,7 @@ The Future Roadmap records identified engineering work without reproducing imple
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.0.1 | 2026-07-29 | Updated active roadmap items after auditing handbook completion status, removed completed documentation catch-up items from active planning, and recorded v1.6.1 maintenance release preparation as the current active roadmap work. |
 | 1.0.0 | 2026-07-24 | Initial implementation of the Future Roadmap documenting identified engineering work, roadmap lifecycle, planning governance, roadmap relationships, and handbook cross-references. |
 
 ---

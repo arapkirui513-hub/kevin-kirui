@@ -24,6 +24,7 @@ tags:
   - Health Planning
 
 repository: "https://github.com/arapkirui513-hub/kenya-health-dashboard"
+demo: "https://kenya-health-dashboard.vercel.app"
 
 status: Completed
 
@@ -153,6 +154,14 @@ Although each methodology is implemented independently, the indicators are desig
 
 The presentation layer exposes the analytical outputs through an interactive dashboard, county comparison workflows, printable reports, CSV exports, and documented REST API endpoints. Rather than combining the analytical methodologies into a new planning model, this layer presents multiple planning indicators side by side, allowing users to compare healthcare access, ownership patterns, service availability, and health need within a consistent interface.
 
+<Figure
+  src="/images/case-studies/kenya-dashboard-overview.png"
+  alt="Kenya Health Facilities Dashboard overview"
+  caption="The production dashboard brings healthcare access, county indicators, and planning signals into a unified county-level planning interface."
+  width={1896}
+  height={882}
+/>
+
 ### 4. Documentation Layer
 
 The documentation layer connects methodology, implementation, deployment, API documentation, release history, and supporting project artefacts. By documenting both the analytical methodologies and the engineering decisions behind them, this layer helps ensure that planning outputs remain transparent, reproducible, and traceable as the project evolves.
@@ -174,6 +183,14 @@ The analytical layer implements several independent planning methodologies, each
 Population-adjusted access analysis estimates healthcare access relative to county population. The Planning Priority Index combines infrastructure, service availability, ownership distribution, and population context into a transparent prioritisation methodology. The Health Need Index independently estimates county-level health need using KDHS 2022 indicators and does not depend on the outputs of the Planning Priority Index.
 
 Together, these methodologies provide complementary planning signals that support structured county-level analysis while remaining analytically independent.
+
+<Figure
+  src="/images/case-studies/kenya-health-need-index.png"
+  alt="Kenya Health Facilities Dashboard Health Need Index"
+  caption="The Health Need Index presents a transparent county-level health-need signal alongside the broader planning indicators."
+  width={1896}
+  height={880}
+/>
 
 ### 3. Backend Services
 
@@ -249,6 +266,14 @@ By the final production release, the application supported a complete county-lev
 - Printable county comparison reports
 - Public REST API with documented endpoints
 - CSV export for downstream analysis
+
+<Figure
+  src="/images/case-studies/kenya-county-comparison.png"
+  alt="Kenya Health Facilities Dashboard county comparison"
+  caption="The County Explorer supports side-by-side comparison of county healthcare indicators within the same planning workflow."
+  width={1896}
+  height={879}
+/>
 
 <Callout
   title="Key Outcome"

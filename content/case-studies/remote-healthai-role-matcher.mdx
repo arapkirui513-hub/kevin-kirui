@@ -151,6 +151,14 @@ Top-Priority Opportunities
 
 This staged approach reduces manual review effort while preserving human judgement over the final application decision.
 
+<Figure
+  src="/images/case-studies/remote-role-matcher-workflow.png"
+  alt="Remote HealthAI Role Matcher workflow diagram"
+  caption="The pipeline progressively transforms collected job listings into scored, shortlisted, application-ready, and top-priority opportunities."
+  width={1080}
+  height={1080}
+/>
+
 ### 4. Automation and Delivery
 
 The automation component distributes prioritised outputs through structured CSV exports, Google Sheets synchronisation, and Telegram notifications. Separating delivery from processing allows the same prioritisation workflow to support multiple downstream destinations without changing the decision pipeline itself.
@@ -245,6 +253,22 @@ The repository snapshot demonstrates the following operational outputs from a ca
 </MetricGrid>
 
 The pipeline successfully combines three independent job sources into a unified processing workflow, producing structured datasets that support different stages of opportunity review. These outputs include scored opportunities, shortlisted roles, application-ready opportunities, top-priority recommendations, source summaries, and company summaries.
+
+<Figure
+  src="/images/case-studies/remote-role-matcher-priority-output.png"
+  alt="Remote HealthAI Role Matcher top-priority opportunity output"
+  caption="The prioritisation stage produces a structured set of high-priority opportunities for focused human review."
+  width={1918}
+  height={1012}
+/>
+
+<Figure
+  src="/images/case-studies/remote-role-matcher-sheets-export.png"
+  alt="Remote HealthAI Role Matcher Google Sheets export"
+  caption="Prioritised opportunities move into a structured Google Sheets workflow for downstream review and decision-making."
+  width={1918}
+  height={877}
+/>
 
 ### Operational Capabilities
 

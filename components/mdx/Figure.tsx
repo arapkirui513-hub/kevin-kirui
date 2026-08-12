@@ -4,16 +4,16 @@ type FigureProps = {
   src: string;
   alt: string;
   caption: string;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
 };
 
 export function Figure({
   src,
   alt,
   caption,
-  width,
-  height,
+  width = 1200,
+  height = 630,
 }: FigureProps) {
   return (
     <figure className="my-12">
