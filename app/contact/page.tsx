@@ -17,6 +17,22 @@ export default function ContactPage() {
 
         <div className="mt-12 max-w-3xl space-y-10 body">
           <div>
+            <h2 className="h3">Book a call</h2>
+            <p className="mt-2 text-sm text-muted">
+              Have a workflow, product, or healthcare AI problem you want to
+              discuss? Book a 30-minute introductory call.
+            </p>
+            <TextLink
+              href="https://calendly.com/kiruikevin388/intro-call"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-block"
+            >
+              Book a 30-minute intro call
+            </TextLink>
+          </div>
+
+          <div>
             <h2 className="h3">Email</h2>
             <p className="mt-2 text-sm text-muted">
               Best for a first message: a short description of the problem
@@ -39,6 +55,18 @@ export default function ContactPage() {
               className="mt-2 inline-block"
             >
               Connect on LinkedIn
+            </TextLink>
+          </div>
+
+          <div>
+            <h2 className="h3">CV</h2>
+            <TextLink
+              href="/cv/kevin-kirui-cv.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-block"
+            >
+              View CV
             </TextLink>
           </div>
 
