@@ -26,13 +26,15 @@ New case studies go in the Work / Case Studies section of the portfolio, alongsi
 
 **Biomedical Maintenance Triage API.** This case study will demonstrate structured outputs, routing logic, confidence handling, validation, and operational decision support, the same category of problem as the ICU signal-to-action work, applied to equipment maintenance triage instead of clinical signals.
 
-**Current status, checked against the repository rather than assumed:**
+**Current status, checked directly against the repository code:**
 
 | Item | Status | Evidence |
 |---|---|---|
-| Completion-side cost log | Resolved | Commit `f2b441f` adds `logModelCompletion()`, recording model, input tokens, output tokens, duration, and call type |
-| `isTimeoutError()` matches actual SDK timeout shape | Not yet verified | No timeout-handling commit found in repository history |
-| `AbortSignal` cancellation past the 60-second deadline | Not yet verified | No `AbortSignal` implementation found in repository history |
+| Completion-side cost log | Resolved | Commit `f2b441f` adds `logModelCompletion()`, recording model, input tokens, output tokens, duration, and call type. Confirmed present in `src/llm/costLog.js` and documented in the README's "Cost and Usage Logging" section. |
+| `isTimeoutError()` matches actual SDK timeout shape | Not yet verified | `retry.js` checks four error shapes (`AbortError`, `TimeoutError`, `ETIMEDOUT`, `ECONNABORTED`), but there is no test or comment confirming these match the pinned provider SDK's actual timeout errors. The README's own "Known Limitations" section states this has been tested against controlled shapes only, not exhaustively verified against the real SDK. |
+| `AbortSignal` cancellation past the 60-second deadline | Not yet verified | Direct code search of `client.js` and `retry.js` confirms no `AbortSignal` or `AbortController` usage anywhere in the transport layer. The 60-second deadline bounds the HTTP response via `Promise.race`, but does not cancel the in-flight model call, retries, or a possible repair call. |
+
+**Last verified: 2026-08-28**, by direct inspection of `src/llm/client.js` and `src/llm/retry.js` (not just repository history or README claims).
 
 One of three items is confirmed resolved. The case study will not be added until all three are closed and verified in code, not just documented as done.
 
