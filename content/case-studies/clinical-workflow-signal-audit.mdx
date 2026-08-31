@@ -2,7 +2,7 @@
 title: "Clinical Workflow Signal Audit"
 slug: "clinical-workflow-signal-audit"
 
-summary: "A workflow intelligence system that models ICU signal-to-action pathways using synthetic clinical workflow data to measure latency, SLA compliance, escalation performance, and data quality."
+summary: "A workflow analytics system that models ICU signal-to-action pathways using synthetic clinical workflow data to measure latency, SLA compliance, escalation performance, and data quality."
 
 published: true
 featured: true
@@ -13,14 +13,13 @@ year: "2026"
 client: "Independent Project"
 
 role:
-  - Healthcare AI Product Systems Specialist
-  - Workflow Intelligence Designer
+  - Healthcare Workflow & AI Systems Designer
 
 category: Healthcare AI
 
 tags:
   - Clinical Workflows
-  - Workflow Intelligence
+  - Workflow Analytics
   - Healthcare AI
   - Product Systems
   - Synthetic Data
@@ -40,7 +39,7 @@ ogImage: "/images/og/clinical-workflow-signal-audit.jpg"
 
 ## Executive Summary
 
-The Clinical Workflow Signal Audit demonstrates how workflow intelligence can identify delayed clinical responses, missed escalations, and operational bottlenecks before deployment using reproducible simulation and evidence-driven reporting.
+The Clinical Workflow Signal Audit demonstrates how workflow analytics can identify delayed clinical responses, missed escalations, and operational bottlenecks before deployment using reproducible simulation and evidence-driven reporting.
 
 Rather than focusing on predictive models, the project evaluates operational performance by measuring signal-to-action latency, SLA compliance, workflow routing, and data quality across simulated ICU workflow events.
 
@@ -99,7 +98,7 @@ Modern intensive care units operate as complex information environments where pa
 
 As healthcare organisations place greater emphasis on quality improvement and operational performance, understanding how information moves through clinical workflows has become as important as measuring patient outcomes. Delayed acknowledgements, missed escalations, inconsistent documentation, and prolonged response times can introduce operational risk even when the underlying clinical information is accurate.
 
-Workflow intelligence addresses this challenge by analysing how signals move from detection to action rather than focusing solely on the signals themselves. Measuring signal-to-action latency, SLA compliance, workflow routing, and data quality provides operational insight into where processes succeed and where they begin to fail.
+Workflow analytics addresses this challenge by analysing how signals move from detection to action rather than focusing solely on the signals themselves. Measuring signal-to-action latency, SLA compliance, workflow routing, and data quality provides operational insight into where processes succeed and where they begin to fail.
 
 This project models the lifecycle of simulated clinical signals as they progress through detection, acknowledgement, escalation, and completed action within an ICU workflow. A synthetic dataset and reproducible evidence generation pipeline were developed to evaluate workflow behaviour in a controlled environment, enabling repeatable analysis without processing patient-identifiable information.
 
@@ -123,13 +122,13 @@ The project was developed around five primary objectives:
 
 3. **Build a reproducible simulation and evidence pipeline** capable of generating synthetic workflow events, calculating performance metrics, and producing evidence-backed reports directly from the generated dataset.
 
-4. **Design a workflow intelligence dashboard** that presents operational performance in a structured format, enabling healthcare teams to monitor workflow reliability and service-level performance.
+4. **Design a workflow analytics dashboard** that presents operational performance in a structured format, enabling healthcare teams to monitor workflow reliability and service-level performance.
 
-5. **Demonstrate a workflow-first approach to healthcare AI product design** by showing how workflow intelligence can complement existing clinical information systems through transparent, measurable, and reproducible evaluation.
+5. **Demonstrate a workflow-first approach to healthcare AI product design** by showing how workflow analytics can complement existing clinical information systems through transparent, measurable, and reproducible evaluation.
 
 ## Approach
 
-I approached the project from a workflow intelligence perspective rather than a traditional predictive AI perspective. Instead of modelling patient outcomes, the project models the operational journey of a clinical signal as it moves through an ICU workflow, from generation and detection to acknowledgement, escalation, and completed action.
+I approached the project from a workflow analytics perspective rather than a traditional predictive AI perspective. Instead of modelling patient outcomes, the project models the operational journey of a clinical signal as it moves through an ICU workflow, from generation and detection to acknowledgement, escalation, and completed action.
 
 The implementation was guided by three design principles.
 
@@ -141,7 +140,7 @@ Each workflow event was represented as a measurable operational process with def
 
 Rather than manually documenting project metrics, the system includes a reproducible evidence pipeline consisting of a simulation specification, synthetic dataset generator, automated metrics engine, and generated evidence reports. Every published metric can be regenerated directly from the project repository, making the evaluation process transparent, repeatable, and verifiable.
 
-### 3. Separate operational intelligence from implementation details
+### 3. Separate analysis from implementation details
 
 The workflow model, simulation engine, evidence generation pipeline, and dashboard presentation were designed as independent layers with clearly defined responsibilities. This separation improves maintainability, simplifies validation, and allows each layer to evolve without affecting the overall workflow model.
 
@@ -149,7 +148,7 @@ These principles shaped both the technical architecture and the documentation st
 
 ## System Design
 
-The system was designed as a layered workflow intelligence architecture in which each layer has a single, clearly defined responsibility. This separation allows workflow simulation, evidence generation, operational analysis, and presentation to evolve independently while producing consistent, traceable, and reproducible outputs.
+The system was designed as a layered workflow analytics architecture in which each layer has a single, clearly defined responsibility. This separation allows workflow simulation, evidence generation, operational analysis, and presentation to evolve independently while producing consistent, traceable, and reproducible outputs.
 
 The architecture consists of five logical layers.
 
@@ -161,13 +160,13 @@ The workflow simulation layer generates synthetic ICU workflow events representi
 
 The evidence generation layer processes the simulated workflow dataset and calculates operational metrics including workflow volume, signal-to-action latency, SLA compliance, workflow tier distribution, routing behaviour, and data quality statistics. The resulting metrics are exported as both machine-readable JSON and human-readable Markdown reports, ensuring that every published result is reproducible.
 
-### 3. Workflow Intelligence Layer
+### 3. Operational Analysis Layer
 
-The workflow intelligence layer transforms raw operational metrics into aggregated insights that describe overall system behaviour rather than individual workflow events. This layer enables evaluation of workflow reliability, operational performance, and process bottlenecks across the simulated environment.
+The operational analysis layer transforms raw operational metrics into aggregated insights that describe overall system behaviour rather than individual workflow events. This layer enables evaluation of workflow reliability, operational performance, and process bottlenecks across the simulated environment.
 
 ### 4. Presentation Layer
 
-The presentation layer exposes workflow intelligence through role-oriented dashboard views that highlight workflow latency, escalation performance, service-level compliance, and data quality trends. Rather than presenting isolated workflow events, the interface emphasises operational visibility across the complete workflow.
+The presentation layer exposes these operational insights through role-oriented dashboard views that highlight workflow latency, escalation performance, service-level compliance, and data quality trends. Rather than presenting isolated workflow events, the interface emphasises operational visibility across the complete workflow.
 
 ### 5. Documentation Layer
 
@@ -183,7 +182,7 @@ The documentation layer connects the simulation specification, generated dataset
 
 ## Technical Implementation
 
-The project was implemented as a reproducible workflow intelligence system centred on simulation, evidence generation, and operational reporting. Rather than treating the dashboard as the primary deliverable, the implementation was structured so that every published metric could be traced back to generated workflow events and reproducible analysis.
+The project was implemented as a reproducible workflow analytics system centred on simulation, evidence generation, and operational reporting. Rather than treating the dashboard as the primary deliverable, the implementation was structured so that every published metric could be traced back to generated workflow events and reproducible analysis.
 
 The implementation consists of four major components.
 
@@ -328,17 +327,17 @@ These results demonstrate that the simulation successfully models measurable ope
 
 ## Lessons Learned
 
-This project reinforced that workflow intelligence is not simply about visualising operational data. A dashboard can display workflow metrics, but those metrics become far more valuable when they are supported by reproducible evidence that explains how they were generated and what they represent.
+This project reinforced that workflow analytics is not simply about visualising operational data. A dashboard can display workflow metrics, but those metrics become far more valuable when they are supported by reproducible evidence that explains how they were generated and what they represent.
 
 Designing the simulation specification, synthetic dataset generator, and automated evidence pipeline fundamentally changed how I think about healthcare AI product development. Rather than manually documenting project outcomes, I now prefer building systems that generate their own evidence directly from reproducible workflows. This approach improves transparency, reduces inconsistencies between implementation and documentation, and makes future validation significantly easier.
 
 The project also demonstrated that documentation should be treated as part of the product rather than as a separate deliverable created after implementation. Integrating simulation specifications, generated evidence, technical documentation, and the published case study into a single workflow created a traceable relationship between the implementation, generated artefacts, and published conclusions.
 
-Perhaps the most important lesson was recognising that healthcare workflow systems should be evaluated by how reliably they measure, explain, and reproduce operational behaviour—not simply by what they display. That perspective now shapes how I approach workflow intelligence, healthcare AI product design, and technical documentation.
+Perhaps the most important lesson was recognising that healthcare workflow systems should be evaluated by how reliably they measure, explain, and reproduce operational behaviour—not simply by what they display. That perspective now shapes how I approach workflow analytics, healthcare AI product design, and technical documentation.
 
 ## What I'd Do Next
 
-If I continued developing this project, I would focus on evolving the workflow intelligence framework from a controlled simulation environment into a reusable operational platform capable of supporting multiple healthcare workflows.
+If I continued developing this project, I would focus on evolving the workflow analytics framework from a controlled simulation environment into a reusable operational platform capable of supporting multiple healthcare workflows.
 
 The first priority would be introducing configurable workflow models. Rather than relying on a single simulated ICU workflow, the system should allow departments such as emergency medicine, radiology, laboratory services, and inpatient wards to define their own escalation pathways, service-level targets, workflow tiers, and operational rules.
 
@@ -346,6 +345,6 @@ The second priority would be expanding interoperability. Supporting healthcare s
 
 The third priority would be strengthening the analytics layer through longitudinal trend analysis, workflow benchmarking, and comparative reporting across departments and workflow types. This would make it possible to evaluate operational performance over time rather than analysing individual simulation runs in isolation.
 
-Finally, I would package the workflow simulation engine, evidence generation pipeline, and reporting framework as reusable platform components rather than project-specific scripts. This would enable future workflow intelligence projects to share a common simulation, evaluation, and publishing pipeline while maintaining the same reproducible evidence standard established throughout this project.
+Finally, I would package the workflow simulation engine, evidence generation pipeline, and reporting framework as reusable platform components rather than project-specific scripts. This would enable future workflow analytics projects to share a common simulation, evaluation, and publishing pipeline while maintaining the same reproducible evidence standard established throughout this project.
 
-Collectively, these improvements would evolve the project from a reproducible proof of concept into a scalable workflow intelligence platform capable of supporting operational analysis across diverse healthcare environments.
+Collectively, these improvements would evolve the project from a reproducible proof of concept into a scalable operational analytics platform capable of supporting operational analysis across diverse healthcare environments.
