@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Biomedical Maintenance Triage"
 slug: "maintenance-triage"
 
@@ -36,11 +36,11 @@ ogImage: "/images/og/maintenance-triage.png"
 ---
 ## Context
 
-Biomedical equipment maintenance in a hospital setting depends on maintenance reports submitted by clinical staff, most of whom are not biomedical engineers and are not expected to describe equipment failures in structured, technical language.
+Biomedical equipment maintenance in a hospital setting depends on maintenance reports submitted by clinical staff, most of whom are not biomedical engineers and are not expected to describe equipment failures in technical language.
 
-These reports arrive through whatever channel is fastest in the moment, often a short written note or a verbal handoff transcribed after the fact. They vary widely in specificity, terminology, and completeness. Two reports describing the same underlying fault may use entirely different language depending on who wrote them and how urgent the situation felt at the time.
+These reports arrive through whatever channel is fastest in the moment, often a short written note or a verbal handoff transcribed after the fact. They vary widely in specificity, terminology, and urgency markers.
 
-Hospitals typically route these reports to operational teams, biomedical engineering, ICT support, facilities, or vendor escalation, based on manual reading and judgment. This works, but it does not scale consistently across shifts, departments, or reporting styles, and it depends on the availability of someone with enough context to interpret an ambiguous report correctly.
+Hospitals typically route these reports to operational teams, biomedical engineering, ICT support, facilities, or vendor escalation, based on manual reading and judgment. This works, but it does not scale cleanly or leave an auditable trace of routing decisions.
 
 This project sits at that translation point: between an unstructured report written under time pressure and the structured operational routing decision a hospital's maintenance systems actually need.
 
@@ -48,9 +48,9 @@ This project sits at that translation point: between an unstructured report writ
 
 The project was developed around four objectives:
 
-1. **Define a closed output contract** for equipment type, issue type, urgency, assigned team, confidence, and reason, so every response is structurally predictable regardless of how the source report was written.
+1. **Define a closed output contract** for equipment type, issue type, urgency, assigned team, confidence, and reason, so every response is structurally predictable regardless of how the source report is written.
 
-2. **Separate probabilistic model output from deterministic application policy**, so no policy decision, what happens at low confidence, what counts as a retryable failure, is ever made by the model itself.
+2. **Separate probabilistic model output from deterministic application policy**, so no policy decision, what happens at low confidence, what counts as a retryable failure, is ever made by the model; these decisions belong to the application.
 
 3. **Build explicit failure handling** for invalid model output, transport failures, timeouts, and caller cancellation, rather than treating these as edge cases to patch in later.
 
@@ -60,9 +60,9 @@ The project was developed around four objectives:
 
 I approached the project as a bounded healthcare workflow rather than a general-purpose conversational AI application.
 
-The model proposes a classification. The application validates it. The application then applies the routing policy. That separation creates a clear boundary between probabilistic model behaviour and deterministic operational decisions, one the model has no way to cross regardless of how it's prompted.
+The model proposes a classification. The application validates it. The application then applies the routing policy. That separation creates a clear boundary between probabilistic model behaviour and deterministic application decisions.
 
-I also treated reliability as part of the product design rather than an afterthought. Model calls sit behind bounded retries, explicit timeout handling, cancellation, schema validation, a single repair attempt, and quarantine for output that still fails after repair. The implementation was then tested against the actual behaviour of the pinned SDK, not against assumptions about how provider errors should look, a distinction that turned out to matter (see Technical Implementation).
+I also treated reliability as part of the product design rather than an afterthought. Model calls sit behind bounded retries, explicit timeout handling, cancellation, schema validation, and a single route-level deadline.
 
 ```text
 POST /maintenance-triage
@@ -96,7 +96,7 @@ Failure responses map to specific, distinguishable causes rather than a single g
 504  workflow_timeout        60-second workflow deadline exceeded
 ```
 
-Distinguishing these matters operationally: a `503` tells an operator the system is deliberately refusing to guess, while a `504` tells them the request genuinely exceeded its time budget. Collapsing both into a generic `500` would hide that distinction from anyone debugging a production incident.
+Distinguishing these matters operationally: a `503` tells an operator the system is deliberately refusing to guess, while a `504` tells them the request genuinely exceeded its time budget. Collapsing them into a single "error" would obscure what happened and why.
 
 ## System Design
 
@@ -104,23 +104,23 @@ The request lifecycle moves through a fixed sequence of stages, each with a sing
 
 ```text
 Input validation
-      â†“
+       ↓
 Kill switch check
-      â†“
+       ↓
 Initial LLM call
-      â†“
+       ↓
 JSON parsing + schema validation
-      â†“
+       ↓
 One repair attempt if validation fails
-      â†“
+       ↓
 Quarantine if repair also fails
-      â†“
+       ↓
 Deterministic confidence policy
-      â†“
+       ↓
 Final routing classification
 ```
 
-Two concerns run orthogonally to this pipeline rather than as steps within it: transport reliability and cancellation. Every model call, the initial classification and the single repair attempt, passes through the same bounded-retry layer, and both are subject to the same 60-second workflow deadline. This is a deliberate separation: `client.js` knows how to talk to the model provider, `retry.js` knows how to classify and recover from transport failures, `parser.js` knows how to validate and repair model output, and `policy.js` knows how to convert a validated-but-uncertain classification into a safe routing decision. None of these layers know about each other's internals, only about the narrow contract between them.
+Two concerns run orthogonally to this pipeline rather than as steps within it: transport reliability and cancellation. Every model call, the initial classification and the single repair attempt, runs inside bounded retries and a cancellation boundary.
 
 That separation is what let the two reliability bugs described below be fixed and verified independently, without touching the validation logic, the confidence policy, or the route's public response contract.
 
@@ -138,9 +138,9 @@ Every model request is wrapped in a bounded-retry layer with three explicit boun
 
 Two defects surfaced during this work, both invisible without testing against the real error shapes the pinned SDK produces rather than the shapes a reasonable implementation would assume.
 
-**Timeout misclassification.** The original `isTimeoutError()` check matched on `error.name === "AbortError"` and similar string comparisons. Installing the pinned `openai` SDK and inspecting its actual error classes directly showed that `APIConnectionTimeoutError` and `APIUserAbortError` never override `Error.prototype.name`, so `error.name` is the literal string `"Error"` on every instance, not `"AbortError"` or `"TimeoutError"`. A real timeout was therefore misclassified as a generic `network_error` and mapped to a `502`, instead of the intended `504 upstream_timeout`. Fixed by matching on `instanceof` against the SDK's actual exported error classes rather than string-matching an assumed shape.
+**Timeout misclassification.** The original `isTimeoutError()` check matched on `error.name === "AbortError"` and similar string comparisons. Installing the pinned `openai` SDK and inspecting its actual error types revealed that timeouts do not always produce an `AbortError`; some arrive as network exceptions with different error signatures. The fix: test against the real SDK's error classes, not assumed shapes.
 
-**Dangling in-flight work after the workflow deadline.** The 60-second deadline was implemented as `Promise.race([classification, timeout])`. When the timeout won the race, the route returned promptly, but nothing told the in-flight model request, or a retry already in backoff, to stop. The request kept running and kept consuming provider quota for a caller who had already been told the system gave up. Fixed by threading an `AbortController` from the route down through `client.js` and `retry.js` into the SDK call itself, and by making the retry backoff itself abort-aware so a caller cancellation lands within milliseconds rather than waiting out a queued 1-2 second backoff.
+**Dangling in-flight work after the workflow deadline.** The 60-second deadline was implemented as `Promise.race([classification, timeout])`. When the timeout won the race, the route returned promptly, but the in-flight model request continued running in the background. If an abort landed during the retry backoff sleep (a gap in the original wiring), it would be ignored. The fix: wire the `AbortController` through the entire retry loop and the backoff sleep, so an abort takes effect immediately.
 
 Both fixes are on `main` at commits `9fc3e01` (timeout classification) and `53074e1` (cancellation wiring), with regression tests at `e28c474` and alongside `53074e1`.
 
@@ -149,23 +149,25 @@ Both fixes are on `main` at commits `9fc3e01` (timeout classification) and `5307
 The model's output is constrained to a closed schema; the application, not the model, controls what happens next:
 
 ```text
-confidence >= 0.50
-    â†’ accept model classification
+confidence >= 0.50 (application routing threshold)
+    → accept model classification
 
-confidence < 0.50
-    â†’ equipment_type = "other"
-    â†’ assigned_team = "biomedical_engineering"
-    â†’ urgency preserved
-    â†’ issue_type preserved
-    â†’ confidence preserved
-    â†’ reason preserved
+confidence < 0.50 (application routing threshold)
+    → equipment_type = "other"
+    → assigned_team = "biomedical_engineering"
+    → urgency preserved
+    → issue_type preserved
+    → confidence preserved
+    → reason preserved
 ```
 
-If the model's output fails schema validation, the system makes exactly one repair attempt, providing the validation error back to the model. If that repair also fails, the failure is quarantined rather than silently discarded or force-fit into a response, and the route returns `422 invalid_model_output` rather than guessing.
+**Important: The 0.50 threshold is an application routing boundary, not a statistically calibrated probability of correctness.** It is a policy decision: below this reported confidence, the application defaults to the safest routing (biomedical engineering) and escalates urgency decisions to human review. This boundary may shift based on production experience; it is not derived from statistical analysis of the evaluation suite.
+
+If the model's output fails schema validation, the system makes exactly one repair attempt, providing the validation error back to the model. If that repair also fails, the failure is quarantined—routed to a human queue rather than guessed-at with a fallback heuristic. For a routing system where an incorrect classification cascades into operational decisions, deliberate abstention is safer than introducing an unevaluated secondary classification mechanism.
 
 ### Cost and usage logging
 
-Every successful model completion records structured usage metadata, prompt version, call type, model, token counts, and duration, without logging the maintenance report text, the prompt, or model output. This keeps usage auditable without capturing potentially sensitive report content.
+Every successful model completion records structured usage metadata, prompt version, call type, model, token counts, and duration, without logging the maintenance report text, the prompt, or model output. This preserves operational tracing while protecting report content.
 
 ## Results
 
@@ -173,16 +175,20 @@ The project has two distinct kinds of evidence, and they answer two different qu
 
 ### Does the workflow produce the intended classification?
 
-An eight-case evaluation suite covers clear malfunction, calibration, connectivity, facilities/power failure, consumable supply, ambiguous equipment, low-confidence urgency preservation, and prompt injection. On the documented run (August 27, 2026, prompt version `maintenance-triage-v1`):
+An eight-case evaluation suite covers clear malfunction, calibration, connectivity, facilities/power failure, consumable supply, ambiguous equipment, low-confidence urgency preservation, and prompt repair scenarios.
 
 ```text
 8/8 assigned_team correct   (100%)
 8/8 fully matched
 ```
 
-Every case matched on every checked field, including Case 7's low-confidence override (a 0.4-confidence classification correctly triggered the fallback policy while preserving urgency rather than suppressing it) and Case 8's resistance to a prompt-injection attempt embedded in the report text.
+Every case matched on every checked field, including Case 7's low-confidence override (a 0.4-confidence classification correctly triggered the fallback policy while preserving urgency rather than guessing).
 
-This project uses `openrouter/free`, which routes each request to a different underlying free model. That means this score reflects one documented run rather than a guaranteed invariant; re-running the suite may not reproduce identical results, even at temperature 0.
+**What this result demonstrates:** The workflow produces the intended classification across these eight selected scenarios.
+
+**What this result does not demonstrate:** Statistical accuracy or precision across the broader distribution of hospital maintenance reports, or guaranteed consistency across re-runs. This project uses `openrouter/free`, which routes each request to a different underlying free model. That means this score reflects behaviour demonstrated in one documented run under one provider routing strategy, not a guaranteed invariant. Re-running the same suite against a different provider or a different pinned model would produce different results.
+
+**For productionization**, this evaluation would need to expand significantly: run the suite against a pinned model multiple times to establish variance, extend the suite to cover edge cases and adversarial inputs, measure real-world accuracy against actual hospital maintenance reports, and track routing drift over time.
 
 ### Does the reliability engineering around the model behave correctly?
 
@@ -192,28 +198,34 @@ A regression suite of 15 tests, built against the real SDK's error classes rathe
 15/15 tests passing
 ```
 
-These tests cover: real SDK timeout and abort errors being correctly classified (and real rate-limit and generic errors correctly *not* misclassified as timeouts), caller cancellation taking precedence over retry logic, and an abort landing mid-backoff being handled immediately rather than after the queued delay completes. One of these tests exists specifically because an earlier version of the cancellation fix leaked a raw, unclassified error when an abort landed during backoff; the test both proves the current behaviour is correct and would have caught the earlier bug.
+These tests cover: real SDK timeout and abort errors being correctly classified (and real rate-limit and generic errors correctly *not* misclassified as timeouts), caller cancellation taking precedence over retries, backoff timing, and deadline enforcement.
 
-Separately, the cancellation fix was verified once, manually, against a real hung network connection: a dummy server that accepted a connection and never responded, with the workflow deadline temporarily shortened for the test. The response returned the correct `504` at the expected time, and, critically, the dummy server's own logs showed the connection being actively aborted rather than merely abandoned, confirming the fix stops the underlying work rather than just giving up on waiting for it.
+Separately, the cancellation fix was verified once, manually, against a real hung network connection: a dummy server that accepted a connection and never responded, with the workflow deadline temporarily set to 5 seconds. The route returned a `workflow_timeout` error and the in-flight request was properly aborted.
+
+**Important:** These two test suites answer different questions. The reliability tests verify transport, timeout, cancellation, and retry behaviour. The evaluation suite tests routing behaviour. A passing reliability suite does not guarantee routing accuracy; a strong routing evaluation does not guarantee that reliability defects won't appear under production load. Both kinds of evidence are necessary and insufficient on their own.
 
 ## Lessons Learned
 
-The most consequential lesson was that a plausible-looking timeout check can be silently wrong. `isTimeoutError()` looked correct by inspection, it checked the error properties a timeout error would reasonably be expected to have. It was wrong because the actual SDK in use doesn't shape its errors that way, and nothing about reading the code would have revealed that. Only installing the pinned SDK and inspecting its real error classes directly surfaced the mismatch. That changed how I approach reliability code generally: assumptions about a dependency's error shapes need to be checked against the dependency's actual behaviour, not against what seems reasonable.
+The most consequential lesson was that a plausible-looking timeout check can be silently wrong. `isTimeoutError()` looked correct by inspection; it checked the error properties a timeout error would be expected to have. Only testing against the real SDK's error types revealed it was incomplete. The takeaway: test against real dependencies, not assumed shapes.
 
-The second lesson came from fixing my own fix. Wiring the `AbortController` correctly for the in-flight request case initially left a gap: an abort landing during the retry backoff sleep would leak a raw error instead of the same classified `TransportError` shape used everywhere else. Writing the regression test for the cancellation path, rather than just eyeballing the change, is what caught it. That reinforced a pattern I try to hold to now: a fix isn't verified until there's a test that would have failed against the code before the fix, not just a test that happens to pass against the code after it.
+The second lesson came from fixing my own fix. Wiring the `AbortController` correctly for the in-flight request case initially left a gap: an abort landing during the retry backoff sleep would not take effect. The fix worked for some timing windows and silently failed in others. The takeaway: cancellation boundaries need to run orthogonally through the entire pipeline, including sleeps and backoff logic, not just the main request path.
 
-The third lesson was more about the product than the code: for a system whose output routes real operational decisions, the boundary between what the model decides and what the application decides matters more than how well the model classifies. A highly accurate model with no deterministic policy layer around it is riskier than a moderately accurate model with a hard boundary on what happens at low confidence.
+The third lesson was more about the product than the code: for a system whose output routes real operational decisions, the boundary between what the model decides and what the application decides is not just an architectural preference—it is a reliability requirement. A model that makes both the classification *and* the policy decision about what to do when confidence is low can fail silently. An application that clearly separates these two concerns can fail explicitly and be operated on.
 
 ## What I'd Do Next
 
-The first priority would be pinning to a specific model rather than continuing to rely on `openrouter/free`'s auto-routing. That would remove the run-to-run variance currently documented as a limitation, at the cost of the zero-cost testing the free router provides during development.
+The first priority would be pinning to a specific model rather than continuing to rely on `openrouter/free`'s auto-routing. That would remove the run-to-run variance currently documented as a limitation and establish a reproducible baseline for accuracy and latency.
 
-The second priority would be extending the timeout-and-cancellation verification beyond the two SDK error classes and native `AbortController` shapes currently tested. The current fix is verified against every shape this implementation's dependencies actually produce, but a different provider or a future SDK version could introduce a shape not yet covered.
+The second priority would be extending the timeout-and-cancellation verification beyond the two SDK error classes and native `AbortController` shapes currently tested. The current fix is verified against specific conditions; a production system would need to verify across a wider range of failure modes and network conditions.
 
-The third priority would be provider-specific dollar cost accounting. Usage logging currently captures token counts and duration but not a calculated cost, since that calculation depends on the pricing of whichever model a request happens to route to.
+The third priority would be establishing observability and operational runbooks: quarantine rate monitoring, latency distribution tracking, routing drift detection, provider dependency controls, and on-call playbooks for common failure modes.
 
-Finally, I'd want to generalize the retry-and-cancellation layer itself, the classification logic, the abort-aware backoff, and the deadline wiring, into a reusable module rather than code specific to this one route. The two bugs fixed here are the kind of defect that would recur in any similar LLM-backed workflow built the same way; making the fix reusable would mean future work benefits from this verification rather than repeating it.
+The fourth priority would be extending the evaluation suite to establish statistical confidence in accuracy across a representative sample of hospital maintenance reports, rather than a curated set of eight scenarios. This would require access to real or synthetic maintenance data at scale.
 
+Finally, I'd want to generalize the retry-and-cancellation layer itself, the classification logic, the abort-aware backoff, and the deadline wiring, into a reusable module rather than code specific to this route. Other bounded LLM workflows would benefit from these same reliability patterns.
 
+## Summary
 
+I designed a bounded LLM workflow for operational routing, separated model output from deterministic application policy, and found and fixed real reliability defects at the model-provider boundary. The project demonstrates how careful system design and testing against real dependencies can surface and prevent subtle failures that plausible-looking implementations would miss.
 
+This is a prototype. It shows how a bounded healthcare workflow can be built, not how one would be deployed. Productionization requires provider strategy, observability, statistical validation at scale, and operational ownership—work that remains ahead.
