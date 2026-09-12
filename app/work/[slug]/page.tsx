@@ -218,7 +218,7 @@ export default async function CaseStudyPage({
               <SectionHeading
                 eyebrow="Continue Exploring"
                 title="More Case Studies"
-                description="Explore additional healthcare AI and workflow intelligence projects."
+                description="Explore additional healthcare AI and clinical workflow design projects."
                 divider="heartbeat"
                 className="mb-12"
               />

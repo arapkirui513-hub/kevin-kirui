@@ -23,7 +23,7 @@ export const site = {
       "Healthcare AI",
       "Healthcare AI Product",
       "Clinical Workflows",
-      "Workflow Intelligence",
+      "AI Systems Design",
       "Biomedical Engineering",
       "Healthcare Operations",
       "Healthcare Systems",
@@ -37,6 +37,6 @@ export const site = {
     title: "Case Studies",
 
     description:
-      "A collection of projects exploring healthcare AI, workflow intelligence, and product systems.",
+      "A collection of projects exploring healthcare AI, clinical workflow design, and product systems.",
   },
 } as const;

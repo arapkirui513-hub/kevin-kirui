@@ -2,6 +2,7 @@ import { Container } from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TextLink } from "@/components/ui/TextLink";
+import { ContactForm } from "@/components/ContactForm";
 import { site } from "@/data/site";
 
 export default function ContactPage() {
@@ -17,7 +18,16 @@ export default function ContactPage() {
 
         <div className="mt-12 max-w-3xl space-y-10 body">
           <div>
-            <h2 className="h3">Book a call</h2>
+            <h2 className="h2">Send a message</h2>
+            <p className="mt-2 text-sm text-black/70">
+              Quickest way to reach me. A real message sent from here lands
+              directly in my inbox.
+            </p>
+            <ContactForm />
+          </div>
+
+          <div className="border-t border-black/10 pt-8">
+            <h2 className="h2">Book a call</h2>
             <p className="mt-2 text-sm text-muted">
               Have a workflow, product, or healthcare AI problem you want to
               discuss? Book a 30-minute introductory call.
