@@ -72,5 +72,5 @@ a {
   font-size: var(--text-small);
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
