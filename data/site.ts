@@ -9,7 +9,7 @@ export const site = {
   author: {
     name: "Kevin Kirui",
     role: "Healthcare Workflow & AI Systems Designer",
-    email: "kiruikevin388@gmail.com",
+    email: "arapkirui513@gmail.com",
   },
 
   social: {
