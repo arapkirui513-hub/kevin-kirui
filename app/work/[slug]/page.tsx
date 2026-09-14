@@ -207,7 +207,7 @@ export default async function CaseStudyPage({
             </div>
 
             <div className="mt-16 grid gap-16 lg:grid-cols-[minmax(0,1fr)_260px]">
-              <article>
+              <article className="min-w-0">
                 <MDXContent source={caseStudy.source} />
               </article>
 

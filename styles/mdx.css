@@ -126,3 +126,15 @@
   color: rgb(26 26 26 / 0.8);
   font-style: italic;
 }
+
+/* ---------- Mobile overflow protection ---------- */
+
+.case-study-content {
+  min-width: 0;
+}
+
+.case-study-content pre {
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre;
+}
