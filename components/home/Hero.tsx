@@ -21,6 +21,14 @@ export function Hero() {
             divider="heartbeat"
           />
 
+          <p className="body-lg mt-6 max-w-2xl font-medium text-black/80">
+            {home.hero.proof}
+          </p>
+
+          <p className="body mt-3 max-w-2xl text-black/60">
+            {home.hero.credibility}
+          </p>
+
           <div className="mt-8 flex flex-wrap gap-4">
             <Button href={home.hero.primaryCta.href}>
               {home.hero.primaryCta.label}

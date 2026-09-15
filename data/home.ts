@@ -8,6 +8,12 @@ export const home = {
     description:
       "I design workflow-first healthcare AI products that transform fragmented clinical information into structured, actionable systems clinicians can actually use.",
 
+    proof:
+      "500 synthetic ICU workflow events modeled, revealing a 36-minute median signal-to-action latency and 63.8% SLA compliance.",
+
+    credibility:
+      "My biomedical engineering training and hospital experience inform how I translate clinical workflow problems into buildable systems.",
+
     primaryCta: {
       label: "View My Work",
       href: "/work",
