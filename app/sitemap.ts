@@ -15,6 +15,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${site.url}/work`,
       lastModified: new Date(),
     },
+    {
+      url: `${site.url}/about`,
+      lastModified: new Date(),
+    },
+    {
+      url: `${site.url}/contact`,
+      lastModified: new Date(),
+    },
     ...caseStudies.map((caseStudy) => ({
       url: `${site.url}/work/${caseStudy.frontmatter.slug}`,
       lastModified: new Date(caseStudy.frontmatter.date),

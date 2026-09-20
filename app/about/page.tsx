@@ -1,6 +1,19 @@
+import type { Metadata } from "next";
+
+import { site } from "@/data/site";
+
 import { Container } from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "About Kevin Kirui, a Healthcare Workflow & AI Systems Designer working across clinical workflows, healthcare operations, and AI systems.",
+  alternates: {
+    canonical: `${site.url}/about`,
+  },
+};
 
 export default function AboutPage() {
   return (

@@ -1,9 +1,21 @@
+import type { Metadata } from "next";
+
+import { site } from "@/data/site";
+
 import { Container } from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TextLink } from "@/components/ui/TextLink";
 import { ContactForm } from "@/components/ContactForm";
-import { site } from "@/data/site";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Contact Kevin Kirui about healthcare workflows, AI systems, product thinking, and healthcare technology projects.",
+  alternates: {
+    canonical: `${site.url}/contact`,
+  },
+};
 
 export default function ContactPage() {
   return (
