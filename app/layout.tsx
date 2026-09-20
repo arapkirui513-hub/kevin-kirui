@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans, DM_Serif_Display, IBM_Plex_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 
 import "./globals.css";
 
@@ -111,6 +112,8 @@ export default function RootLayout({
         <main id="main-content">{children}</main>
 
         <Footer />
+
+        <Analytics />
       </body>
     </html>
   );
