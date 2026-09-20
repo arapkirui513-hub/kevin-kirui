@@ -32,6 +32,10 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
 
+  alternates: {
+    canonical: `${site.url}/`,
+  },
+
   title: {
     default: site.name,
     template: `%s | ${site.name}`,
