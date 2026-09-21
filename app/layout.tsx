@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   },
 
   title: {
-    default: `${site.name} | Healthcare Workflow & AI Systems Designer`,
+    default: `${site.name} | Healthcare AI Product Systems Specialist`,
     template: `%s | ${site.name}`,
   },
 
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: site.url,
-    title: `${site.name} | Healthcare Workflow & AI Systems Designer`,
+    title: `${site.name} | Healthcare AI Product Systems Specialist`,
     description: site.description,
     siteName: site.name,
     images: [
@@ -70,14 +70,14 @@ export const metadata: Metadata = {
         url: site.seo.defaultImage,
         width: 1200,
         height: 630,
-        alt: `${site.name} | Healthcare Workflow & AI Systems Designer`,
+        alt: `${site.name} | Healthcare AI Product Systems Specialist`,
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} | Healthcare Workflow & AI Systems Designer`,
+    title: `${site.name} | Healthcare AI Product Systems Specialist`,
     description: site.description,
     images: [site.seo.defaultImage],
   },

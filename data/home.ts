@@ -1,6 +1,6 @@
 export const home = {
   hero: {
-    eyebrow: "Healthcare Workflow & AI Systems Designer",
+    eyebrow: "Healthcare AI Product Systems Specialist",
 
     title:
       "I design systems around workflows, not just software.",
@@ -69,3 +69,4 @@ export const home = {
     },
   },
 } as const;
+

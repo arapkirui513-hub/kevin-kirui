@@ -9,7 +9,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "About Kevin Kirui, a Healthcare Workflow & AI Systems Designer working across clinical workflows, healthcare operations, and AI systems.",
+    "About Kevin Kirui, a Healthcare AI Product Systems Specialist working across clinical workflows, healthcare operations, and AI systems.",
   alternates: {
     canonical: `${site.url}/about`,
   },
@@ -24,7 +24,7 @@ export default function AboutPage() {
       <Container>
         <SectionHeading
           eyebrow="About"
-          title="Healthcare Workflow & AI Systems Designer"
+          title="Healthcare AI Product Systems Specialist"
           description="I translate breakdowns in clinical workflows into specs engineering teams can build from."
           divider="heartbeat"
         />
@@ -50,3 +50,4 @@ export default function AboutPage() {
     </Section>
   );
 }
+
