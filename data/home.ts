@@ -20,8 +20,8 @@ export const home = {
     },
 
     secondaryCta: {
-      label: "About Me",
-      href: "/about",
+      label: "Get in Touch",
+      href: "/contact",
     },
   },
 
