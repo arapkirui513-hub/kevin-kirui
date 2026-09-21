@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
-import { DM_Sans, DM_Serif_Display, IBM_Plex_Mono } from "next/font/google";
+import {
+  DM_Sans,
+  DM_Serif_Display,
+  IBM_Plex_Mono,
+} from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 
 import "./globals.css";
@@ -38,7 +42,7 @@ export const metadata: Metadata = {
   },
 
   title: {
-    default: site.name,
+    default: `${site.name} | Healthcare Workflow & AI Systems Designer`,
     template: `%s | ${site.name}`,
   },
 
@@ -58,7 +62,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: site.url,
-    title: site.name,
+    title: `${site.name} | Healthcare Workflow & AI Systems Designer`,
     description: site.description,
     siteName: site.name,
     images: [
@@ -66,14 +70,14 @@ export const metadata: Metadata = {
         url: site.seo.defaultImage,
         width: 1200,
         height: 630,
-        alt: site.name,
+        alt: `${site.name} | Healthcare Workflow & AI Systems Designer`,
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: site.name,
+    title: `${site.name} | Healthcare Workflow & AI Systems Designer`,
     description: site.description,
     images: [site.seo.defaultImage],
   },
@@ -93,13 +97,14 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-           __html: JSON.stringify(person),
+            __html: JSON.stringify(person),
           }}
         />
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-           __html: JSON.stringify(website),
+            __html: JSON.stringify(website),
           }}
         />
       </head>
