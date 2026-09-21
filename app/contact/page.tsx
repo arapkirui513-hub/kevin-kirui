@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 
 import { site } from "@/data/site";
 
@@ -31,30 +31,30 @@ export default function ContactPage() {
           divider="heartbeat"
         />
 
-        <div className="mt-12 max-w-3xl space-y-10 body">
-          <div>
+        <div className="mt-12 grid max-w-5xl gap-8 body md:grid-cols-2">
+          <div className="rounded-xl border border-black/10 p-6">
+            <h2 className="h2">Book a 30-minute intro call</h2>
+            <p className="mt-2 text-sm text-muted">
+              Have a workflow, product, or healthcare AI problem you want to
+              discuss? Grab a time directly on my calendar.
+            </p>
+            <TextLink
+              href="https://calendly.com/kiruikevin388/intro-call"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-block"
+            >
+              Book a call →
+            </TextLink>
+          </div>
+
+          <div className="rounded-xl border border-black/10 p-6">
             <h2 className="h2">Send a message</h2>
             <p className="mt-2 text-sm text-black/70">
               Quickest way to reach me. A real message sent from here lands
               directly in my inbox.
             </p>
             <ContactForm />
-          </div>
-
-          <div className="border-t border-black/10 pt-8">
-            <h2 className="h2">Book a call</h2>
-            <p className="mt-2 text-sm text-muted">
-              Have a workflow, product, or healthcare AI problem you want to
-              discuss? Book a 30-minute introductory call.
-            </p>
-            <TextLink
-              href="https://calendly.com/kiruikevin388/intro-call"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 inline-block"
-            >
-              Book a 30-minute intro call
-            </TextLink>
           </div>
 
           <div>

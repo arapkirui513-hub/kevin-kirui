@@ -140,3 +140,8 @@
   white-space: pre;
   box-sizing: border-box;
 }
+
+.case-study-content code {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
