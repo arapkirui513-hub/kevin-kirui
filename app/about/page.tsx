@@ -5,6 +5,7 @@ import { site } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
   title: "About",
@@ -45,6 +46,12 @@ export default function AboutPage() {
           <p>
             I want to work with founders and Heads of Product at early-stage health-tech companies who need someone who can sit between clinical reality and software architecture, and hand back something the engineering team can actually build.
           </p>
+
+          <div className="pt-4">
+            <Button href="/contact">
+              Let's Talk
+            </Button>
+          </div>
         </div>
       </Container>
     </Section>
