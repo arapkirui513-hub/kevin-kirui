@@ -134,7 +134,9 @@
 }
 
 .case-study-content pre {
+  width: 100%;
   max-width: 100%;
   overflow-x: auto;
   white-space: pre;
+  box-sizing: border-box;
 }
