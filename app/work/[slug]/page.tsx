@@ -123,6 +123,26 @@ export default async function CaseStudyPage({
             divider="heartbeat"
           />
 
+          <div className="flex flex-wrap items-center gap-4">
+            {caseStudy.frontmatter.demo && (
+              <TextLink
+                href={caseStudy.frontmatter.demo}
+                target="_blank"
+                rel="noreferrer"
+              >
+                View Live Demo
+              </TextLink>
+            )}
+
+            <TextLink
+              href={caseStudy.frontmatter.repository}
+              target="_blank"
+              rel="noreferrer"
+            >
+              View Source Code
+            </TextLink>
+          </div>
+
           <div className="mt-12 overflow-hidden rounded-2xl border border-black/10 shadow-sm">
             <Image
               src={caseStudy.frontmatter.featuredImage}
@@ -189,26 +209,6 @@ export default async function CaseStudyPage({
             </div>
 
             <div className="my-16 border-t border-black/10" />
-
-            <div className="flex flex-wrap items-center gap-4">
-              {caseStudy.frontmatter.demo && (
-                <TextLink
-                  href={caseStudy.frontmatter.demo}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  View Live Demo
-                </TextLink>
-              )}
-
-              <TextLink
-                href={caseStudy.frontmatter.repository}
-                target="_blank"
-                rel="noreferrer"
-              >
-                View Source Code
-              </TextLink>
-            </div>
 
             <div className="mt-16 grid gap-16 lg:grid-cols-[minmax(0,1fr)_260px]">
               <article className="min-w-0">
