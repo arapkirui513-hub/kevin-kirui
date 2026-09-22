@@ -69,9 +69,11 @@ The capstone demo is currently deferred, so I'm documenting the work as it actua
 - `docs/RETROSPECTIVE.md`
 - `docs/HOURS-LOG.md`
 
-**Publication status:** Draft
+**Publication status:** Published
 
-**LinkedIn status:** Not yet published
+**LinkedIn status:** Published
+
+LinkedIn post: https://www.linkedin.com/posts/kevin-kirui-ba9593275_aiengineering-healthcareai-buildinpublic-share-7508146426313420800-UOA9/
 
 **Capstone demo:** Deferred
 

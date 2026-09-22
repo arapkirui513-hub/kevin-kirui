@@ -397,7 +397,9 @@ The final publication will document the internship outcome and direct readers to
 
 Status:
 
-**To complete / publish**
+**Published**
+
+LinkedIn: https://www.linkedin.com/posts/kevin-kirui-ba9593275_aiengineering-healthcareai-buildinpublic-share-7508146426313420800-UOA9/
 
 Planned destinations:
 
@@ -421,7 +423,7 @@ Before final submission, verify:
 - [x] Week 7 evidence identified
 - [ ] Retrospective completed
 - [ ] Hours log completed
-- [ ] Build-in-public post published
+- [x] Build-in-public post published
 - [ ] Capstone demo/video completed or intentionally deferred
 - [ ] Final FlyRank review/sign-off completed
 
