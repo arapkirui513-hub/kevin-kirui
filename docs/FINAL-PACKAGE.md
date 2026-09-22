@@ -373,7 +373,7 @@ Target length:
 
 Status:
 
-**To complete**
+**Completed**
 
 ---
 
@@ -385,7 +385,7 @@ The complete internship hours log will be maintained separately:
 
 Status:
 
-**To complete**
+**Completed**
 
 The log preserves the estimated hours recorded by the FlyRank internship portal.
 
@@ -421,10 +421,10 @@ Before final submission, verify:
 - [x] AI-assisted development transparency included
 - [x] Portfolio repository identified
 - [x] Week 7 evidence identified
-- [ ] Retrospective completed
-- [ ] Hours log completed
+- [x] Retrospective completed
+- [x] Hours log completed
 - [x] Build-in-public post published
-- [ ] Capstone demo/video completed or intentionally deferred
+- [x] Capstone demo/video intentionally deferred
 - [ ] Final FlyRank review/sign-off completed
 
 ---
@@ -475,10 +475,10 @@ Portfolio repository
 | Capstone limitation | Documented |
 | Portfolio | Published |
 | Week 7 evidence | Present |
-| Final package | In progress |
-| Retrospective | Pending |
-| Hours log | Pending |
-| Build-in-public publication | Pending |
+| Final package | Documentation complete; final sign-off pending |
+| Retrospective | Completed |
+| Hours log | Completed |
+| Build-in-public publication | Published |
 | Demo video | Deferred |
 | Final sign-off | Pending |
 

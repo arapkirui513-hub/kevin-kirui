@@ -1,22 +1,12 @@
 ﻿# FlyRank AI Internship - Build in Public
 
-I started my FlyRank AI internship thinking I was here to learn how to build AI applications.
+My FlyRank internship taught me that shipping a system and finishing a system are different things.
 
-I’m leaving with a different lesson:
+Over the past several weeks, I worked across APIs, databases, containers, AI integrations, automation workflows, agents, background jobs, PDF generation, decision flows, and healthcare-focused applications.
 
-**Building the system is only half the work. You also need to test it, evaluate it, document it, and understand where it fails.**
+My capstone brought several of those pieces together: an AI image understanding and content-matching system for healthcare equipment.
 
-Over the internship, I worked across APIs, databases, containers, AI integrations, automation workflows, agents, background jobs, PDF generation, decision flows, and healthcare-focused applications.
-
-My capstone brought many of those pieces together: an **AI image understanding and content-matching system for healthcare equipment.**
-
-The pipeline uses:
-
-- Vision metadata
-- Embeddings
-- Similarity retrieval
-- A mismatch guard
-- Human review paths
+The pipeline uses vision metadata, embeddings, similarity retrieval, a mismatch guard, and human review paths.
 
 For V2, I evaluated:
 
@@ -24,34 +14,30 @@ For V2, I evaluated:
 - 4 equipment categories
 - 120 retrieval candidates
 
-The results:
+The evaluation produced:
 
 **60.00% Retrieval Precision@10**
+
 **66.67% Guarded Precision**
 
-But the most useful result wasn't the percentage.
+The evaluation's real value was exposing a weakness in patient-monitor matching.
 
-The evaluation exposed a weakness in **patient-monitor matching**. Some hard-negative images were themselves classified as patient monitors with high confidence, allowing the current guard logic to accept some weak matches.
+Some hard-negative images were themselves classified as patient monitors with high confidence. Because the expected subject and model classification can agree, the current guard logic can accept some weak matches.
 
-I could have tuned the thresholds until the numbers looked better.
+I could have kept tuning thresholds until the numbers looked better.
 
 Instead, I documented the limitation.
 
-That became one of my biggest lessons from the internship:
+That changed how I think about evaluation. A system needs more than a successful happy path. It needs tests, evidence, failure analysis, and a clear account of where the current design stops working.
 
-**A system isn't finished because the happy path works.**
+AI-assisted development was part of my workflow throughout the internship. I used AI for code generation, debugging, test design, documentation, and development support. I still verified the implementation through execution, database checks, failure-path testing, API behavior, corpus integrity checks, and evaluation runs.
 
-AI-assisted development was also part of my workflow. I used AI for code generation, debugging, test design, documentation, and development support. I still had to run the code, inspect the data, test failure paths, verify API behavior, and evaluate the results myself.
-
-I'm leaving FlyRank with a clearer direction: building healthcare-focused AI systems where **workflow boundaries, human review, auditability, and failure handling are explicit.**
+I'm leaving FlyRank with a clearer direction around building healthcare-focused AI systems with explicit workflow boundaries, human review, auditability, and failure handling.
 
 The work:
 
-- Portfolio: [ADD_PORTFOLIO_LINK]
-- Capstone: [ADD_CAPSTONE_LINK]
-- Final package: [ADD_FINAL_PACKAGE_LINK]
-
-The capstone demo is currently deferred, so I'm documenting the work as it actually stands rather than presenting an unfinished deliverable as complete.
+- Portfolio: https://kevin-kirui.vercel.app/
+- Capstone: https://github.com/arapkirui513-hub/flyrank-capstone-image-relevance
 
 #AIEngineering #HealthcareAI #BuildInPublic #SoftwareEngineering
 
@@ -63,12 +49,6 @@ The capstone demo is currently deferred, so I'm documenting the work as it actua
 
 **Purpose:** Public build-in-public summary of the FlyRank AI internship.
 
-**Canonical supporting documents:**
-
-- `docs/FINAL-PACKAGE.md`
-- `docs/RETROSPECTIVE.md`
-- `docs/HOURS-LOG.md`
-
 **Publication status:** Published
 
 **LinkedIn status:** Published
@@ -76,6 +56,12 @@ The capstone demo is currently deferred, so I'm documenting the work as it actua
 LinkedIn post: https://www.linkedin.com/posts/kevin-kirui-ba9593275_aiengineering-healthcareai-buildinpublic-share-7508146426313420800-UOA9/
 
 **Capstone demo:** Deferred
+
+**Canonical supporting documents:**
+
+- `docs/FINAL-PACKAGE.md`
+- `docs/RETROSPECTIVE.md`
+- `docs/HOURS-LOG.md`
 
 ## Social Preview Guidance
 
