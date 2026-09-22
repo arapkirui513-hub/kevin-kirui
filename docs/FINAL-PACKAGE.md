@@ -387,7 +387,7 @@ Status:
 
 **To complete**
 
-The log should reflect actual recorded internship time rather than estimated hours.
+The log preserves the estimated hours recorded by the FlyRank internship portal.
 
 ---
 
