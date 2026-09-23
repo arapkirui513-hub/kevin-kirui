@@ -5,6 +5,7 @@ export function personSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": `${site.url}/#person`,
 
     name: site.author.name,
 
@@ -37,8 +38,7 @@ export function websiteSchema() {
     description: site.description,
 
     author: {
-      "@type": "Person",
-      name: site.author.name,
+      "@id": `${site.url}/#person`,
     },
 
     inLanguage: "en",
@@ -61,13 +61,11 @@ export function articleSchema(
     datePublished: frontmatter.date,
 
     author: {
-      "@type": "Person",
-      name: site.author.name,
+      "@id": `${site.url}/#person`,
     },
 
     publisher: {
-      "@type": "Person",
-      name: site.author.name,
+      "@id": `${site.url}/#person`,
     },
 
     mainEntityOfPage: {

@@ -25,6 +25,7 @@ export default function ContactPage() {
     <Section spacing="spacious">
       <Container>
         <SectionHeading
+          as="h1"
           eyebrow="Contact"
           title="Have a clinical workflow problem worth solving?"
           description="I work with founders and Heads of Product at early-stage health-tech companies who need clinical workflows translated into specs their engineering team can build from. If that's the kind of problem you're facing, I'd like to hear from you."

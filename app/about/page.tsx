@@ -24,6 +24,7 @@ export default function AboutPage() {
     <Section spacing="spacious">
       <Container>
         <SectionHeading
+          as="h1"
           eyebrow="About"
           title="Healthcare AI Product Systems Specialist"
           description="I translate breakdowns in clinical workflows into specs engineering teams can build from."

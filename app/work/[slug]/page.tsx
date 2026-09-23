@@ -117,6 +117,7 @@ export default async function CaseStudyPage({
           />
 
           <SectionHeading
+            as="h1"
             eyebrow={caseStudy.frontmatter.category}
             title={caseStudy.frontmatter.title}
             description={caseStudy.frontmatter.summary}

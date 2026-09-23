@@ -66,7 +66,7 @@ export function CaseStudyCard({
         href={`/work/${caseStudy.slug}`}
         className="mt-auto pt-8"
       >
-        View Case Study
+        {caseStudy.title}
       </TextLink>
     </article>
   );
